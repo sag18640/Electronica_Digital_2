@@ -59,7 +59,7 @@ void main(void) {
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     while (1) {
         ADC_con(flag);
-        
+
     }
 
 }
@@ -70,17 +70,22 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
+    TRISAbits.TRISA5 = 1;
+//    PORTAbits.RA5 = 1;
     TRISD = 0b00000000; //puerto D como salida contador leds
     TRISC = 0b00011000;
+    //    TRISCbits.TRISC3 = 1;
+    //    TRISCbits.TRISC5 = 0;
     TRISB = 0b11111110;
-    TRISAbits.TRISA5 = 1;
+
     PORTB = 0; //limpiamos puertos
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-    PORTA = 0;
+
     SSPIF = 0;
     SSPIE = 1;
+    INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
 }
 
 
@@ -94,9 +99,15 @@ void __interrupt() ISR(void) {
         valor_MSB = ADRESH;
         PIR1bits.ADIF = 0; //apagamos la bandera de ADC
     }
-    if (SSPIF == 1) {
+    if (PIR1bits.SSPIF == 1) {
+
+
         count = spiRead();
         spiWrite(valor_MSB);
-        SSPIF = 0;
+        PIR1bits.SSPIF = 0;
+
+
+
+
     }
 }

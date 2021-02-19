@@ -57,7 +57,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _main main `(v  1 e 1 0 ]
 "74
 [v _setup setup `(v  1 e 1 0 ]
-"97
+"101
 [v _ISR ISR `II(v  1 e 1 0 ]
 "13 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave2.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -67,11 +67,9 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
 "48
 [v _spiRead spiRead `(uc  1 e 1 0 ]
-"166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
-[v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"228
+"228 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S149 . 1 `uc 1 RB0 1 0 :1:0 
+[s S166 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -81,8 +79,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S158 . 1 `S149 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES158  1 e 1 @6 ]
+[u S175 . 1 `S166 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES175  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
@@ -91,7 +89,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "459
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S117 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S134 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -101,18 +99,29 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S126 . 1 `uc 1 . 1 0 :2:0 
+[s S143 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S131 . 1 `S117 1 . 1 0 `S126 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES131  1 e 1 @11 ]
+[u S148 . 1 `S134 1 . 1 0 `S143 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES148  1 e 1 @11 ]
+[s S106 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"553
+[u S114 . 1 `S106 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES114  1 e 1 @12 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S54 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S51 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -122,8 +131,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1433
-[u S63 . 1 `S54 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES63  1 e 1 @133 ]
+[u S60 . 1 `S51 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES60  1 e 1 @133 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1540
@@ -134,7 +143,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S235 . 1 `uc 1 BF 1 0 :1:0 
+[s S261 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -144,39 +153,39 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S244 . 1 `uc 1 . 1 0 :2:0 
+[s S270 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S249 . 1 `uc 1 . 1 0 :2:0 
+[s S275 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S255 . 1 `uc 1 . 1 0 :2:0 
+[s S281 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S260 . 1 `uc 1 . 1 0 :2:0 
+[s S286 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S265 . 1 `uc 1 . 1 0 :2:0 
+[s S291 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S270 . 1 `uc 1 . 1 0 :2:0 
+[s S296 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S275 . 1 `S235 1 . 1 0 `S244 1 . 1 0 `S249 1 . 1 0 `S255 1 . 1 0 `S260 1 . 1 0 `S265 1 . 1 0 `S270 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES275  1 e 1 @148 ]
+[u S301 . 1 `S261 1 . 1 0 `S270 1 . 1 0 `S275 1 . 1 0 `S281 1 . 1 0 `S286 1 . 1 0 `S291 1 . 1 0 `S296 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES301  1 e 1 @148 ]
 [s S76 . 1 `uc 1 IOCB 1 0 :8:0 
 ]
 "2436
@@ -191,8 +200,10 @@ SPI_ACTIVE_2_IDLE 64
 ]
 [u S87 . 1 `S76 1 . 1 0 `S78 1 . 1 0 ]
 [v _IOCBbits IOCBbits `VES87  1 e 1 @150 ]
-"4277
-[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"4457
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
+"4463
+[v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
 "35 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave2.X\main.c
 [v _count count `uc  1 e 1 0 ]
 "36
@@ -214,19 +225,19 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sDataSample sDataSample `E1272  1 p 1 0 ]
 [v spiInit@sClockIdle sClockIdle `E1276  1 p 1 1 ]
 [v spiInit@sTransmitEdge sTransmitEdge `E1280  1 p 1 2 ]
-"16
+"15
 [v spiInit@sType sType `E1264  1 a 1 4 ]
 "28
 } 0
 "74 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave2.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"90
+"94
 } 0
-"97
+"101
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"125
+"132
 } 0
 "35 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave2.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]

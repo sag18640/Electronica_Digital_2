@@ -2682,7 +2682,7 @@ typedef enum
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
-char spiRead(void);
+char spiRead();
 # 31 "main.c" 2
 
 
@@ -2728,18 +2728,22 @@ void main(void) {
 
 
 void setup(void) {
+    TRISAbits.TRISA5 = 1;
+
     TRISD = 0b00000000;
     TRISC = 0b00011000;
+
+
     TRISB = 0b11111110;
 
-    TRISAbits.TRISA5 = 1;
+
     TRISE = 0b00000000;
     IOCBbits.IOCB6 = 1;
     IOCBbits.IOCB7 = 1;
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
-    PORTA = 0;
+
     PORTE = 0;
     flag2 = 0;
     INTCON = 0b11101000;
@@ -2751,10 +2755,13 @@ void setup(void) {
 
 
 void __attribute__((picinterrupt(("")))) ISR(void) {
-    if (SSPIF == 1) {
+    if (PIR1bits.SSPIF == 1) {
+
         a = spiRead();
         spiWrite(count);
-        SSPIF = 0;
+        PIR1bits.SSPIF = 0;
+
+
     }
     if (INTCONbits.RBIF == 1) {
         if (PORTBbits.RB6 == 0) {

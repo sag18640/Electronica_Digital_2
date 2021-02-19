@@ -65,17 +65,17 @@ void main(void) {
             PORTDbits.RD2 = 1;
             PORTDbits.RD1 = 0;
             PORTDbits.RD0 = 0;
-//            __delay_ms(500);
+            //            __delay_ms(500);
         } else if (valor > 25 && valor < 36) {
             PORTDbits.RD2 = 0;
             PORTDbits.RD1 = 1;
             PORTDbits.RD0 = 0;
-//            __delay_ms(500);
+            //            __delay_ms(500);
         } else if (valor > 36) {
             PORTDbits.RD2 = 0;
             PORTDbits.RD1 = 0;
             PORTDbits.RD0 = 1;
-//            __delay_ms(500);
+            //            __delay_ms(500);
         }
 
     }
@@ -88,17 +88,20 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
+    TRISA = 0b11111111;
+//    PORTAbits.RA5 = 1;
     TRISD = 0b00000000; //puerto D como salida contador leds
     TRISC = 0b00011000;
-    TRISB = 0b11111110;
-    TRISA = 0b11111111;
-    PORTB = 0; //limpiamos puertos
+    //    TRISCbits.TRISC3 = 1;
+    //    TRISCbits.TRISC5 = 0;
+
     PORTC = 0;
-    PORTD = 0;
     PORTA = 0;
-    PORTE = 0;
+    PORTD = 0;
     SSPIF = 0;
     SSPIE = 1;
+
+    INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
 }
 
 
@@ -117,9 +120,14 @@ void __interrupt() ISR(void) {
         valor_MSB = ADRESH;
         PIR1bits.ADIF = 0; //apagamos la bandera de ADC
     }
-    if (SSPIF == 1) {
+    if (PIR1bits.SSPIF == 1) {
+
+
         count = spiRead();
         spiWrite(valor_MSB);
-        SSPIF = 0;
+        PIR1bits.SSPIF = 0;
+
+
+
     }
 }

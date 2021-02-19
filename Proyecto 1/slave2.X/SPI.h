@@ -36,7 +36,7 @@ typedef enum
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
-char spiRead(void);
+char spiRead();
 
 #endif /* __cplusplus */
 

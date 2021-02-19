@@ -39,14 +39,17 @@
 uint8_t flag = 1;
 uint8_t turno = 1;
 uint8_t retorno;
-uint8_t valor0;
-uint8_t valor1;
-uint8_t valor2;
+uint8_t valorT;
+uint8_t valorC;
+uint8_t valorA;
 //double valor1;
 //double valor2;
 float v;
+float vv;
 float x;
+float p;
 char s[20];
+
 uint8_t count = 0;
 uint8_t recibido;
 uint8_t enviado;
@@ -56,7 +59,7 @@ uint8_t enviado;
 void setup(void);
 void __interrupt() ISR(void);
 double conversor(uint8_t x);
-
+double conversor2(uint8_t val);
 //******************************************************************************
 //  Ciclo Principal
 //******************************************************************************
@@ -68,60 +71,94 @@ void main(void) {
     Lcd_Init();
     Lcd_Clear();
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-    PORTBbits.RB0 = 1;
-    PORTBbits.RB1 = 1;
-    PORTBbits.RB2 = 1;
+
     while (1) {
-        __delay_ms(500);
-        PORTBbits.RB0 = 0;
-        PORTBbits.RB1 = 1;
-        PORTBbits.RB2 = 1;
-        __delay_ms(1);
-        spiWrite(PORTA);
-        valor0 = spiRead();
-        __delay_ms(500);
-
-        PORTBbits.RB0 = 1;
-        PORTBbits.RB1 = 1;
-        PORTBbits.RB2 = 0;
-        __delay_ms(1);
-        spiWrite(PORTA);
-        valor1 = spiRead();
-        __delay_ms(500);
-        PORTBbits.RB0 = 1;
-        PORTBbits.RB1 = 0;
-        PORTBbits.RB2 = 1;
-        __delay_ms(1);
-        spiWrite(PORTA);
-        valor2 = spiRead();
-        __delay_ms(800);
-
 
         Lcd_Set_Cursor(1, 1); //colocamos el cursor en posicón 1,1
         Lcd_Write_String("S1:   S2:    S3:"); //escribimos los encabezados
-        //        //valores de voltaje en decimal
-        //        valor2 = conversor(valor_AN1);
         Lcd_Set_Cursor(2, 1); //colocamos el cursor en posición 2,1
-        v=conversor(valor2);
-        sprintf(s, "%3.2fV", v); //guardamos los valores de la converison
-        //        //en el array s con un formato de 2 decimales en caracter flotante
-        Lcd_Write_String(s); //escribimos los valores en la LCD
-        //        //        enviar(s);
+        v = conversor(valorA);
+        sprintf(s, "%3.2fV", v);
+        Lcd_Write_String(s);
+        Lcd_Set_Cursor(2, 12);
+        p=conversor2(valorT);
+        sprintf(s, "%3.2fV", p);
+        Lcd_Write_String(s);
         Lcd_Set_Cursor(2, 7);
-        sprintf(s, "%d", valor1);
+        sprintf(s, "%d", valorC);
         Lcd_Write_String(s);
+
+        __delay_ms(200);
+        PORTCbits.RC0 = 0;
+        __delay_ms(1);
+        SSPBUF = 0;
+        valorT = spiRead();
+        __delay_ms(1);
+        PORTCbits.RC0 = 1;
+
+        __delay_ms(200);
+        PORTCbits.RC1 = 0;
+        __delay_ms(1);
+        SSPBUF = 1;
+        valorA = spiRead();
+        __delay_ms(1);
+        PORTCbits.RC1 = 1;
+
+        __delay_ms(200);
+        PORTCbits.RC2 = 0;
+        __delay_ms(1);
+        SSPBUF = 2;
+        valorC = spiRead();
+        __delay_ms(1);
+        PORTCbits.RC2 = 1;
+        __delay_ms(200);
+
+
+        //        v = conversor(valorA);
+        //        sprintf(s, "%3.2fV", v); //guardamos los valores de la converison
+        //        //        //en el array s con un formato de 2 decimales en caracter flotante
+        //        Lcd_Write_String(s); //escribimos los valores en la LCD
+        //        __delay_ms(200);
+        //        PORTBbits.RB1 = 0;
+        //        spiWrite(2);
+        //        valorA = spiRead();
         //        enviar(s);
-        sprintf(s, "%3.2fV", valor0); //se guarda el valor de contador en s con
-        //        //formado de decimal
-        Lcd_Set_Cursor(2, 14);
-        Lcd_Write_String(s);
+        //        __delay_ms(50);
+        //        PORTBbits.RB1 = 1;
+        //        Lcd_Set_Cursor(2, 7);
+        //        sprintf(s, "%d", valorC);
+        //        Lcd_Write_String(s);
+        //        __delay_ms(200);
+        //        PORTBbits.RB2 = 0;
+        //        spiWrite(3);
+        //        valorC = spiRead();
+        //        enviar(s);
+        //        __delay_ms(50);
         //        //        enviar(s);
-        //        if (count >= 0 && count < 10) {//limpiamos los espacios de decenas y 
-        //            //centenas si en caso no se necesitaran
-        //            Lcd_Set_Cursor(2, 15); 
-        //            Lcd_Write_String("   ");
+        //        sprintf(s, "%3.2fC", valorT); //se guarda el valor de contador en s con
+        //        //        //formado de decimal
+        //        Lcd_Set_Cursor(2, 12);
+        //        Lcd_Write_String(s);
         //
-        //        }
+        //        __delay_ms(200);
+        //        PORTBbits.RB0 = 0;
+        //        PORTBbits.RB1 = 1;
+        //        PORTBbits.RB2 = 1;
+        //        spiWrite(1);
+        //        valorT = spiRead();
+        //        enviar(s);
+        //        __delay_ms(50);
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 //******************************************************************************
@@ -131,13 +168,17 @@ void main(void) {
 void setup(void) {
     TRISD = 0b00000000; // puerto D como salida
     TRISC = 0b10010000; //activamos el RX como entrada
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 1;
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     ANSEL = 0b00000011;
     PORTC = 0; //limpiamos puertos
     PORTD = 0;
     PORTE = 0;
-    PORTB = 0;
+    PORTB = 0b11111111;
+    INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
 }
 
 
@@ -145,11 +186,15 @@ void setup(void) {
 //  Funciones
 //******************************************************************************
 //
-double conversor(uint8_t val) {
+
+float conversor(uint8_t val) {
     x = 0.0195 * val; //5V/256bits=0.0195 convertir de bits a voltaje
     return (x);
 }
-
+float conversor2(uint8_t val) {
+    vv = 1.95 * val;
+    return (vv);
+}
 
 //******************************************************************************
 //  Interrupciones

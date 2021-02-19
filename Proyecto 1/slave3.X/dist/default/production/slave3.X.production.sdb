@@ -65,9 +65,9 @@ SPI_ACTIVE_2_IDLE 64
 [v _main main `(v  1 e 1 0 ]
 "90
 [v _setup setup `(v  1 e 1 0 ]
-"109
+"112
 [v _conversor conversor `(d  1 e 4 0 ]
-"114
+"117
 [v _ISR ISR `II(v  1 e 1 0 ]
 "13 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -79,8 +79,6 @@ SPI_ACTIVE_2_IDLE 64
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 "166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"228
-[v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
@@ -97,11 +95,9 @@ SPI_ACTIVE_2_IDLE 64
 "369
 [u S69 . 1 `S60 1 . 1 0 ]
 [v _PORTDbits PORTDbits `VES69  1 e 1 @8 ]
-"414
-[v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "459
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S92 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S90 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -110,8 +106,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIF 1 0 :1:6 
 ]
 "553
-[u S100 . 1 `S92 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES100  1 e 1 @12 ]
+[u S98 . 1 `S90 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES98  1 e 1 @12 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
@@ -145,8 +141,6 @@ SPI_ACTIVE_2_IDLE 64
 [v _ADCON0bits ADCON0bits `VES340  1 e 1 @31 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
-"1478
-[v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1540
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1602
@@ -213,6 +207,10 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSPIE SSPIE `VEb  1 e 0 @1123 ]
 "4277
 [v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"4457
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
+"4463
+[v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
 "36 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 [v _count count `uc  1 e 1 0 ]
 "37
@@ -236,22 +234,22 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sDataSample sDataSample `E1272  1 p 1 4 ]
 [v spiInit@sClockIdle sClockIdle `E1276  1 p 1 5 ]
 [v spiInit@sTransmitEdge sTransmitEdge `E1280  1 p 1 6 ]
-"16
+"15
 [v spiInit@sType sType `E1264  1 a 1 0 ]
 "28
 } 0
 "90 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"102
+"105
 } 0
-"109
+"112
 [v _conversor conversor `(d  1 e 4 0 ]
 {
 [v conversor@val val `uc  1 a 1 wreg ]
 [v conversor@val val `uc  1 a 1 wreg ]
 [v conversor@val val `uc  1 a 1 6 ]
-"112
+"115
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -323,10 +321,10 @@ SPI_ACTIVE_2_IDLE 64
 [v ADC_con@flag flag `uc  1 a 1 5 ]
 "26
 } 0
-"114 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+"117 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"125
+"133
 } 0
 "35 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]

@@ -72,18 +72,22 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
+    TRISAbits.TRISA5 = 1;
+//    PORTAbits.RA5 = 1;
     TRISD = 0b00000000; //puerto D como salida contador leds
     TRISC = 0b00011000; //puerto C como salida display
+    //    TRISCbits.TRISC3 = 1;
+    //    TRISCbits.TRISC5 = 0;
     TRISB = 0b11111110; //puerto B como entradas a excepción del pin 0 como-
     //salida alarma
-    TRISAbits.TRISA5 = 1;
+
     TRISE = 0b00000000; //puerto E como salida transistores
     IOCBbits.IOCB6 = 1;
     IOCBbits.IOCB7 = 1;
     PORTB = 0; //limpiamos puertos
     PORTC = 0;
     PORTD = 0;
-    PORTA = 0;
+
     PORTE = 0;
     flag2 = 0;
     INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
@@ -95,10 +99,13 @@ void setup(void) {
 //******************************************************************************
 
 void __interrupt() ISR(void) {
-    if (SSPIF == 1) {
+    if (PIR1bits.SSPIF == 1) {
+
         a = spiRead();
         spiWrite(count);
-        SSPIF = 0;
+        PIR1bits.SSPIF = 0;
+
+
     }
     if (INTCONbits.RBIF == 1) {//verificamos si fue interrupt on change
         if (PORTBbits.RB6 == 0) {//antirebote aumentar

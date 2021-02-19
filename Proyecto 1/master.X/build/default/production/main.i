@@ -2810,7 +2810,7 @@ typedef enum
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
-char spiRead(void);
+char spiRead();
 # 34 "main.c" 2
 
 
@@ -2820,14 +2820,17 @@ char spiRead(void);
 uint8_t flag = 1;
 uint8_t turno = 1;
 uint8_t retorno;
-uint8_t valor0;
-uint8_t valor1;
-uint8_t valor2;
+uint8_t valorT;
+uint8_t valorC;
+uint8_t valorA;
 
 
 float v;
+float vv;
 float x;
+float p;
 char s[20];
+
 uint8_t count = 0;
 uint8_t recibido;
 uint8_t enviado;
@@ -2837,7 +2840,7 @@ uint8_t enviado;
 void setup(void);
 void __attribute__((picinterrupt(("")))) ISR(void);
 double conversor(uint8_t x);
-
+double conversor2(uint8_t val);
 
 
 
@@ -2849,60 +2852,48 @@ void main(void) {
     Lcd_Init();
     Lcd_Clear();
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-    PORTBbits.RB0 = 1;
-    PORTBbits.RB1 = 1;
-    PORTBbits.RB2 = 1;
+
     while (1) {
-        _delay((unsigned long)((500)*(8000000/4000.0)));
-        PORTBbits.RB0 = 0;
-        PORTBbits.RB1 = 1;
-        PORTBbits.RB2 = 1;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        spiWrite(PORTA);
-        valor0 = spiRead();
-        _delay((unsigned long)((500)*(8000000/4000.0)));
-
-        PORTBbits.RB0 = 1;
-        PORTBbits.RB1 = 1;
-        PORTBbits.RB2 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        spiWrite(PORTA);
-        valor1 = spiRead();
-        _delay((unsigned long)((500)*(8000000/4000.0)));
-        PORTBbits.RB0 = 1;
-        PORTBbits.RB1 = 0;
-        PORTBbits.RB2 = 1;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        spiWrite(PORTA);
-        valor2 = spiRead();
-        _delay((unsigned long)((800)*(8000000/4000.0)));
-
 
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1:   S2:    S3:");
-
-
         Lcd_Set_Cursor(2, 1);
-        v=conversor(valor2);
+        v = conversor(valorA);
         sprintf(s, "%3.2fV", v);
-
         Lcd_Write_String(s);
-
+        Lcd_Set_Cursor(2, 12);
+        p=conversor2(valorT);
+        sprintf(s, "%3.2fV", p);
+        Lcd_Write_String(s);
         Lcd_Set_Cursor(2, 7);
-        sprintf(s, "%d", valor1);
+        sprintf(s, "%d", valorC);
         Lcd_Write_String(s);
 
-        sprintf(s, "%3.2fV", valor0);
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        PORTCbits.RC0 = 0;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        SSPBUF = 0;
+        valorT = spiRead();
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        PORTCbits.RC0 = 1;
 
-        Lcd_Set_Cursor(2, 14);
-        Lcd_Write_String(s);
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        PORTCbits.RC1 = 0;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        SSPBUF = 1;
+        valorA = spiRead();
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        PORTCbits.RC1 = 1;
 
-
-
-
-
-
-
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        PORTCbits.RC2 = 0;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        SSPBUF = 2;
+        valorC = spiRead();
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        PORTCbits.RC2 = 1;
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+# 162 "main.c"
     }
 }
 
@@ -2912,13 +2903,17 @@ void main(void) {
 void setup(void) {
     TRISD = 0b00000000;
     TRISC = 0b10010000;
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 1;
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     ANSEL = 0b00000011;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-    PORTB = 0;
+    PORTB = 0b11111111;
+    INTCON = 0b11101000;
 }
 
 
@@ -2926,11 +2921,15 @@ void setup(void) {
 
 
 
-double conversor(uint8_t val) {
+
+float conversor(float val) {
     x = 0.0195 * val;
     return (x);
 }
-
+float conversor2(float val) {
+    vv = 1.95 * val;
+    return (vv);
+}
 
 
 
