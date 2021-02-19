@@ -99,10 +99,10 @@ void setup(void) {
 //******************************************************************************
 
 void __interrupt() ISR(void) {
-    if (PIR1bits.SSPIF == 1) {
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
 
         a = spiRead();
-        spiWrite(count);
+        spiWrite(0x3F);
         PIR1bits.SSPIF = 0;
 
 

@@ -58,8 +58,8 @@ uint8_t enviado;
 //******************************************************************************
 void setup(void);
 void __interrupt() ISR(void);
-double conversor(uint8_t x);
-double conversor2(uint8_t val);
+float conversor(uint8_t x);
+float conversor2(uint8_t val);
 //******************************************************************************
 //  Ciclo Principal
 //******************************************************************************
@@ -76,42 +76,46 @@ void main(void) {
 
         Lcd_Set_Cursor(1, 1); //colocamos el cursor en posicón 1,1
         Lcd_Write_String("S1:   S2:    S3:"); //escribimos los encabezados
-        Lcd_Set_Cursor(2, 1); //colocamos el cursor en posición 2,1
-        v = conversor(valorA);
-        sprintf(s, "%3.2fV", v);
-        Lcd_Write_String(s);
-        Lcd_Set_Cursor(2, 12);
-        p=conversor2(valorT);
-        sprintf(s, "%3.2fV", p);
-        Lcd_Write_String(s);
-        Lcd_Set_Cursor(2, 7);
-        sprintf(s, "%d", valorC);
-        Lcd_Write_String(s);
+        //
+        //        Lcd_Set_Cursor(2, 1); //colocamos el cursor en posición 2,1
+        //        v = conversor(valorA);
+        //        sprintf(s, "%3.2fV", v);
+        //        Lcd_Write_String(s);
 
-        __delay_ms(200);
+        Lcd_Set_Cursor(2, 11);
+                p = conversor2(valorT);
+        sprintf(s, "%3.2fC", p);
+        Lcd_Write_String(s);
+        //
+        //        Lcd_Set_Cursor(2, 7);
+        //        sprintf(s, "%d", valorC);
+        //        Lcd_Write_String(s);
+
+        __delay_ms(1);
         PORTCbits.RC0 = 0;
         __delay_ms(1);
         SSPBUF = 0;
         valorT = spiRead();
         __delay_ms(1);
         PORTCbits.RC0 = 1;
+        __delay_ms(200);
 
-        __delay_ms(200);
-        PORTCbits.RC1 = 0;
-        __delay_ms(1);
-        SSPBUF = 1;
-        valorA = spiRead();
-        __delay_ms(1);
-        PORTCbits.RC1 = 1;
+        //        __delay_ms(200);
+        //        PORTCbits.RC1 = 0;
+        //        __delay_ms(1);
+        //        SSPBUF = 1;
+        //        valorA = spiRead();
+        //        __delay_ms(1);
+        //        PORTCbits.RC1 = 1;
 
-        __delay_ms(200);
-        PORTCbits.RC2 = 0;
-        __delay_ms(1);
-        SSPBUF = 2;
-        valorC = spiRead();
-        __delay_ms(1);
-        PORTCbits.RC2 = 1;
-        __delay_ms(200);
+        //        __delay_ms(200);
+        //        PORTCbits.RC2 = 0;
+        //        __delay_ms(1);
+        //        SSPBUF = 2;
+        //        valorC = spiRead();
+        //        __delay_ms(1);
+        //        PORTCbits.RC2 = 1;
+        //        __delay_ms(200);
 
 
         //        v = conversor(valorA);
@@ -191,6 +195,7 @@ float conversor(uint8_t val) {
     x = 0.0195 * val; //5V/256bits=0.0195 convertir de bits a voltaje
     return (x);
 }
+
 float conversor2(uint8_t val) {
     vv = 1.95 * val;
     return (vv);

@@ -2839,8 +2839,8 @@ uint8_t enviado;
 
 void setup(void);
 void __attribute__((picinterrupt(("")))) ISR(void);
-double conversor(uint8_t x);
-double conversor2(uint8_t val);
+float conversor(uint8_t x);
+float conversor2(uint8_t val);
 
 
 
@@ -2857,43 +2857,30 @@ void main(void) {
 
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1:   S2:    S3:");
-        Lcd_Set_Cursor(2, 1);
-        v = conversor(valorA);
-        sprintf(s, "%3.2fV", v);
-        Lcd_Write_String(s);
-        Lcd_Set_Cursor(2, 12);
-        p=conversor2(valorT);
-        sprintf(s, "%3.2fV", p);
-        Lcd_Write_String(s);
-        Lcd_Set_Cursor(2, 7);
-        sprintf(s, "%d", valorC);
+
+
+
+
+
+
+        Lcd_Set_Cursor(2, 11);
+                p = conversor2(valorT);
+        sprintf(s, "%3.2fC", p);
         Lcd_Write_String(s);
 
-        _delay((unsigned long)((200)*(8000000/4000.0)));
+
+
+
+
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTCbits.RC0 = 0;
         _delay((unsigned long)((1)*(8000000/4000.0)));
         SSPBUF = 0;
         valorT = spiRead();
         _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTCbits.RC0 = 1;
-
         _delay((unsigned long)((200)*(8000000/4000.0)));
-        PORTCbits.RC1 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        SSPBUF = 1;
-        valorA = spiRead();
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        PORTCbits.RC1 = 1;
-
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-        PORTCbits.RC2 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        SSPBUF = 2;
-        valorC = spiRead();
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        PORTCbits.RC2 = 1;
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-# 162 "main.c"
+# 166 "main.c"
     }
 }
 
@@ -2922,11 +2909,12 @@ void setup(void) {
 
 
 
-float conversor(float val) {
+float conversor(uint8_t val) {
     x = 0.0195 * val;
     return (x);
 }
-float conversor2(float val) {
+
+float conversor2(uint8_t val) {
     vv = 1.95 * val;
     return (vv);
 }

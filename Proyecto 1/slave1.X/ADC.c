@@ -11,7 +11,7 @@
 
 
 void ADC_con(uint8_t flag) {
-      //se justifica la resolución del ADC a la izquierda  en ADRESH
+      ADCON1bits.ADFM=0;//se justifica la resolución del ADC a la izquierda  en ADRESH
     ANSEL = 0b00000001; //se configura el RA0 como entrada analógica
     INTCON = 0b11101000;//se configuran las interrupciones GIE, PIE, T0IE y RBIE
     ADCON0 = 0b01000001;//frecuencia de oscilacion 1/8 canal analógico AN0 y 

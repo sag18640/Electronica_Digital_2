@@ -2752,9 +2752,7 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
         valor_MSB = ADRESH;
         PIR1bits.ADIF = 0;
     }
-    if (PIR1bits.SSPIF == 1) {
-
-
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
         count = spiRead();
         spiWrite(valor_MSB);
         PIR1bits.SSPIF = 0;

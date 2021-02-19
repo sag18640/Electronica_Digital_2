@@ -71,7 +71,7 @@ void main(void) {
 
 void setup(void) {
     TRISAbits.TRISA5 = 1;
-//    PORTAbits.RA5 = 1;
+    //    PORTAbits.RA5 = 1;
     TRISD = 0b00000000; //puerto D como salida contador leds
     TRISC = 0b00011000;
     //    TRISCbits.TRISC3 = 1;
@@ -99,9 +99,7 @@ void __interrupt() ISR(void) {
         valor_MSB = ADRESH;
         PIR1bits.ADIF = 0; //apagamos la bandera de ADC
     }
-    if (PIR1bits.SSPIF == 1) {
-
-
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
         count = spiRead();
         spiWrite(valor_MSB);
         PIR1bits.SSPIF = 0;

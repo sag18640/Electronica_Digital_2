@@ -120,9 +120,7 @@ void __interrupt() ISR(void) {
         valor_MSB = ADRESH;
         PIR1bits.ADIF = 0; //apagamos la bandera de ADC
     }
-    if (PIR1bits.SSPIF == 1) {
-
-
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
         count = spiRead();
         spiWrite(valor_MSB);
         PIR1bits.SSPIF = 0;
