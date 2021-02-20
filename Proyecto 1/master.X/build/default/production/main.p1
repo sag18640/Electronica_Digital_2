@@ -34,11 +34,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "11
 [; ;./LCD.h: 11: void Lcd_Write_String(char *a);
 [v _Lcd_Write_String `(v ~T0 @X0 0 ef1`*uc ]
-"62 main.c
-[; ;main.c: 62: float conversor2(uint8_t val);
-[v _conversor2 `(f ~T0 @X0 0 ef1`uc ]
-"194 C:\Program Files\Microchip\xc8\v2.31\pic\include\c90\stdio.h
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 [v F1313 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1313 ~T0 @X0 0 e ]
@@ -60,6 +55,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "39 ./SPI.h
 [; ;./SPI.h: 39: char spiRead();
 [v _spiRead `(uc ~T0 @X0 0 e? ]
+"62 main.c
+[; ;main.c: 62: float conversor2(uint8_t val);
+[v _conversor2 `(f ~T0 @X0 0 ef1`uc ]
+"194 C:\Program Files\Microchip\xc8\v2.31\pic\include\c90\stdio.h
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "1602 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
@@ -87,9 +87,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "228
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"459
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 459: extern volatile unsigned char INTCON __attribute__((address(0x00B)));
-[v _INTCON `Vuc ~T0 @X0 0 e@11 ]
 [t ~ __interrupt . k ]
 [t T2 __interrupt ]
 "543
@@ -473,97 +470,118 @@ Version 4.0 HI-TECH Software Intermediate Code
 "78
 [; ;main.c: 78:         Lcd_Write_String("S1:   S2:    S3:");
 [e ( _Lcd_Write_String (1 :s 1C ]
-"85
-[; ;main.c: 85:         Lcd_Set_Cursor(2, 11);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 11 `i `uc ]
-"86
-[; ;main.c: 86:                 p = conversor2(valorT);
-[e = _p ( _conversor2 (1 _valorT ]
-"87
-[; ;main.c: 87:         sprintf(s, "%3.2fC", p);
-[e ( _sprintf (1 , (. , &U _s :s 2C -> _p `d ]
-"88
-[; ;main.c: 88:         Lcd_Write_String(s);
-[e ( _Lcd_Write_String (1 &U _s ]
+"89
+[; ;main.c: 89:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"90
+[; ;main.c: 90:         PORTCbits.RC0 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+"91
+[; ;main.c: 91:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"92
+[; ;main.c: 92:         SSPBUF = 0;
+[e = _SSPBUF -> -> 0 `i `uc ]
+"93
+[; ;main.c: 93:         valorT = spiRead();
+[e = _valorT -> ( _spiRead ..  `uc ]
 "94
 [; ;main.c: 94:         _delay((unsigned long)((1)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "95
-[; ;main.c: 95:         PORTCbits.RC0 = 0;
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-"96
-[; ;main.c: 96:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"97
-[; ;main.c: 97:         SSPBUF = 0;
-[e = _SSPBUF -> -> 0 `i `uc ]
-"98
-[; ;main.c: 98:         valorT = spiRead();
-[e = _valorT -> ( _spiRead ..  `uc ]
-"99
-[; ;main.c: 99:         _delay((unsigned long)((1)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"100
-[; ;main.c: 100:         PORTCbits.RC0 = 1;
+[; ;main.c: 95:         PORTCbits.RC0 = 1;
 [e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-"101
-[; ;main.c: 101:         _delay((unsigned long)((200)*(8000000/4000.0)));
+"96
+[; ;main.c: 96:         _delay((unsigned long)((200)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"166
-[; ;main.c: 166:     }
+"97
+[; ;main.c: 97:         Lcd_Set_Cursor(2, 11);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 11 `i `uc ]
+"98
+[; ;main.c: 98:         p = conversor2(valorT);
+[e = _p ( _conversor2 (1 _valorT ]
+"99
+[; ;main.c: 99:         sprintf(s, "%3.2fC", p);
+[e ( _sprintf (1 , (. , &U _s :s 2C -> _p `d ]
+"100
+[; ;main.c: 100:         Lcd_Write_String(s);
+[e ( _Lcd_Write_String (1 &U _s ]
+"111
+[; ;main.c: 111:         _delay((unsigned long)((200)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"112
+[; ;main.c: 112:         PORTCbits.RC2 = 0;
+[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
+"113
+[; ;main.c: 113:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"114
+[; ;main.c: 114:         SSPBUF = 2;
+[e = _SSPBUF -> -> 2 `i `uc ]
+"115
+[; ;main.c: 115:         valorC = spiRead();
+[e = _valorC -> ( _spiRead ..  `uc ]
+"116
+[; ;main.c: 116:         _delay((unsigned long)((1)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"117
+[; ;main.c: 117:         PORTCbits.RC2 = 1;
+[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+"118
+[; ;main.c: 118:         _delay((unsigned long)((200)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"119
+[; ;main.c: 119:         Lcd_Set_Cursor(2, 7);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 7 `i `uc ]
+"120
+[; ;main.c: 120:         sprintf(s, "%d", valorC);
+[e ( _sprintf (1 , (. , &U _s :s 3C -> _valorC `i ]
+"121
+[; ;main.c: 121:         Lcd_Write_String(s);
+[e ( _Lcd_Write_String (1 &U _s ]
+"170
+[; ;main.c: 170:     }
 }
 [e :U 140 ]
 [e $U 141  ]
 [e :U 142 ]
-"167
-[; ;main.c: 167: }
+"171
+[; ;main.c: 171: }
 [e :UE 139 ]
 }
-"172
-[; ;main.c: 172: void setup(void) {
+"176
+[; ;main.c: 176: void setup(void) {
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"173
-[; ;main.c: 173:     TRISD = 0b00000000;
-[e = _TRISD -> -> 0 `i `uc ]
-"174
-[; ;main.c: 174:     TRISC = 0b10010000;
-[e = _TRISC -> -> 144 `i `uc ]
-"175
-[; ;main.c: 175:     PORTCbits.RC0 = 1;
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-"176
-[; ;main.c: 176:     PORTCbits.RC1 = 1;
-[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
 "177
-[; ;main.c: 177:     PORTCbits.RC2 = 1;
-[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 177:     TRISD = 0b00000000;
+[e = _TRISD -> -> 0 `i `uc ]
 "178
-[; ;main.c: 178:     TRISE = 0b00000000;
-[e = _TRISE -> -> 0 `i `uc ]
+[; ;main.c: 178:     TRISC = 0b10010000;
+[e = _TRISC -> -> 144 `i `uc ]
 "179
-[; ;main.c: 179:     TRISB = 0b00000000;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;main.c: 179:     TRISE = 0b00000000;
+[e = _TRISE -> -> 0 `i `uc ]
 "180
-[; ;main.c: 180:     ANSEL = 0b00000011;
-[e = _ANSEL -> -> 3 `i `uc ]
+[; ;main.c: 180:     TRISB = 0b00000000;
+[e = _TRISB -> -> 0 `i `uc ]
 "181
-[; ;main.c: 181:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;main.c: 181:     ANSEL = 0b00000011;
+[e = _ANSEL -> -> 3 `i `uc ]
 "182
-[; ;main.c: 182:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;main.c: 182:     PORTC = 0;
+[e = _PORTC -> -> 0 `i `uc ]
 "183
-[; ;main.c: 183:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;main.c: 183:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "184
-[; ;main.c: 184:     PORTB = 0b11111111;
-[e = _PORTB -> -> 255 `i `uc ]
+[; ;main.c: 184:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
 "185
-[; ;main.c: 185:     INTCON = 0b11101000;
-[e = _INTCON -> -> 232 `i `uc ]
+[; ;main.c: 185:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
 "186
 [; ;main.c: 186: }
 [e :UE 143 ]
@@ -646,6 +664,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 217: }
 [e :UE 146 ]
 }
-[p f _sprintf 8495104 ]
+[p f _sprintf 8495232 ]
+[a 3C 37 100 0 ]
 [a 2C 37 51 46 50 102 67 0 ]
 [a 1C 83 49 58 32 32 32 83 50 58 32 32 32 32 83 51 58 0 ]

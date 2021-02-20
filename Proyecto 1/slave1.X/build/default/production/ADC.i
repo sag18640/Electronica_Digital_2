@@ -2633,9 +2633,8 @@ extern __bank0 __bit __timeout;
 
 
 
-
 void ADC_con(uint8_t flag) {
-
+    ADCON1bits.ADFM = 0;
     ANSEL = 0b00000001;
     INTCON = 0b11101000;
     ADCON0 = 0b01000001;

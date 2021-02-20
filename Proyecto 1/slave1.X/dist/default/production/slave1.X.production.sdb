@@ -45,7 +45,7 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"13 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\ADC.c
+"12 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\ADC.c
 [v _ADC_con ADC_con `(v  1 e 1 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -98,13 +98,13 @@ SPI_ACTIVE_2_IDLE 64
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 "1245
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
-[s S280 . 1 `uc 1 ADON 1 0 :1:0 
+[s S295 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S285 . 1 `uc 1 . 1 0 :1:0 
+[s S300 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -113,14 +113,14 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S294 . 1 `uc 1 . 1 0 :1:0 
+[s S309 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S297 . 1 `uc 1 . 1 0 :1:0 
+[s S312 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S300 . 1 `S280 1 . 1 0 `S285 1 . 1 0 `S294 1 . 1 0 `S297 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES300  1 e 1 @31 ]
+[u S315 . 1 `S295 1 . 1 0 `S300 1 . 1 0 `S309 1 . 1 0 `S312 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES315  1 e 1 @31 ]
 [s S55 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
@@ -139,7 +139,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-[s S244 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S259 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -148,8 +148,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1718
-[u S252 . 1 `S244 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES252  1 e 1 @140 ]
+[u S267 . 1 `S259 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES267  1 e 1 @140 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
 [s S106 . 1 `uc 1 BF 1 0 :1:0 
@@ -195,6 +195,15 @@ SPI_ACTIVE_2_IDLE 64
 ]
 [u S146 . 1 `S106 1 . 1 0 `S115 1 . 1 0 `S120 1 . 1 0 `S126 1 . 1 0 `S131 1 . 1 0 `S136 1 . 1 0 `S141 1 . 1 0 ]
 [v _SSPSTATbits SSPSTATbits `VES146  1 e 1 @148 ]
+[s S241 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 VCFG0 1 0 :1:4 
+`uc 1 VCFG1 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"2991
+[u S247 . 1 `S241 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES247  1 e 1 @159 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "4274
@@ -233,19 +242,18 @@ SPI_ACTIVE_2_IDLE 64
 {
 "89
 } 0
-"13 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\ADC.c
+"12 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\ADC.c
 [v _ADC_con ADC_con `(v  1 e 1 0 ]
 {
 [v ADC_con@flag flag `uc  1 a 1 wreg ]
 [v ADC_con@flag flag `uc  1 a 1 wreg ]
-"15
 [v ADC_con@flag flag `uc  1 a 1 5 ]
-"26
+"25
 } 0
 "96 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"111
+"112
 } 0
 "35 C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\SPI.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]

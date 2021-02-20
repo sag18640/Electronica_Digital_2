@@ -82,14 +82,9 @@ void main(void) {
         //        sprintf(s, "%3.2fV", v);
         //        Lcd_Write_String(s);
 
-        Lcd_Set_Cursor(2, 11);
-                p = conversor2(valorT);
-        sprintf(s, "%3.2fC", p);
-        Lcd_Write_String(s);
+
         //
-        //        Lcd_Set_Cursor(2, 7);
-        //        sprintf(s, "%d", valorC);
-        //        Lcd_Write_String(s);
+
 
         __delay_ms(1);
         PORTCbits.RC0 = 0;
@@ -99,6 +94,11 @@ void main(void) {
         __delay_ms(1);
         PORTCbits.RC0 = 1;
         __delay_ms(200);
+        Lcd_Set_Cursor(2, 11);
+        p = conversor2(valorT);
+        sprintf(s, "%3.2fC", p);
+        Lcd_Write_String(s);
+//        s = 0;
 
         //        __delay_ms(200);
         //        PORTCbits.RC1 = 0;
@@ -108,14 +108,18 @@ void main(void) {
         //        __delay_ms(1);
         //        PORTCbits.RC1 = 1;
 
-        //        __delay_ms(200);
-        //        PORTCbits.RC2 = 0;
-        //        __delay_ms(1);
-        //        SSPBUF = 2;
-        //        valorC = spiRead();
-        //        __delay_ms(1);
-        //        PORTCbits.RC2 = 1;
-        //        __delay_ms(200);
+        __delay_ms(200);
+        PORTCbits.RC2 = 0;
+        __delay_ms(1);
+        SSPBUF = 2;
+        valorC = spiRead();
+        __delay_ms(1);
+        PORTCbits.RC2 = 1;
+        __delay_ms(200);
+        Lcd_Set_Cursor(2, 7);
+        sprintf(s, "%d", valorC);
+        Lcd_Write_String(s);
+//        s = 0;
 
 
         //        v = conversor(valorA);
@@ -172,17 +176,13 @@ void main(void) {
 void setup(void) {
     TRISD = 0b00000000; // puerto D como salida
     TRISC = 0b10010000; //activamos el RX como entrada
-    PORTCbits.RC0 = 1;
-    PORTCbits.RC1 = 1;
-    PORTCbits.RC2 = 1;
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     ANSEL = 0b00000011;
     PORTC = 0; //limpiamos puertos
     PORTD = 0;
     PORTE = 0;
-    PORTB = 0b11111111;
-    INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
+    PORTB = 0;
 }
 
 

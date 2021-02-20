@@ -2750,6 +2750,7 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
     if (PIR1bits.ADIF == 1) {
         flag = 1;
         valor_MSB = ADRESH;
+        PORTD = valor_MSB;
         PIR1bits.ADIF = 0;
     }
     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {

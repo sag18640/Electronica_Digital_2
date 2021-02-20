@@ -484,30 +484,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 99:         valor_MSB = ADRESH;
 [e = _valor_MSB _ADRESH ]
 "100
-[; ;main.c: 100:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;main.c: 100:         PORTD = valor_MSB;
+[e = _PORTD _valor_MSB ]
 "101
-[; ;main.c: 101:     }
+[; ;main.c: 101:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"102
+[; ;main.c: 102:     }
 }
 [e :U 144 ]
-"102
-[; ;main.c: 102:     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
+"103
+[; ;main.c: 103:     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
 [e $ ! && == -> . . _PIR1bits 0 3 `i -> 1 `i == -> . . _SSPSTATbits 0 0 `i -> 1 `i 145  ]
 {
-"103
-[; ;main.c: 103:         count = spiRead();
-[e = _count -> ( _spiRead ..  `uc ]
 "104
-[; ;main.c: 104:         spiWrite(valor_MSB);
-[e ( _spiWrite (1 -> _valor_MSB `uc ]
+[; ;main.c: 104:         count = spiRead();
+[e = _count -> ( _spiRead ..  `uc ]
 "105
-[; ;main.c: 105:         PIR1bits.SSPIF = 0;
+[; ;main.c: 105:         spiWrite(valor_MSB);
+[e ( _spiWrite (1 -> _valor_MSB `uc ]
+"106
+[; ;main.c: 106:         PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"110
-[; ;main.c: 110:     }
+"111
+[; ;main.c: 111:     }
 }
 [e :U 145 ]
-"111
-[; ;main.c: 111: }
+"112
+[; ;main.c: 112: }
 [e :UE 143 ]
 }

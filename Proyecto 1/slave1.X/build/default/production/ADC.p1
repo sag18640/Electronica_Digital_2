@@ -1,5 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"3387 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+"2983 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2983:     struct {
+[s S116 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S116 . . VCFG0 VCFG1 . ADFM ]
+"2982
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2982: typedef union {
+[u S115 `S116 1 ]
+[n S115 . . ]
+"2991
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 2991: extern volatile ADCON1bits_t ADCON1bits __attribute__((address(0x09F)));
+[v _ADCON1bits `VS115 ~T0 @X0 0 e@159 ]
+"3387
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
 "459
@@ -291,46 +302,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"13 ADC.c
-[; ;ADC.c: 13: void ADC_con(uint8_t flag) {
+"12 ADC.c
+[; ;ADC.c: 12: void ADC_con(uint8_t flag) {
 [v _ADC_con `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _ADC_con ]
 [v _flag `uc ~T0 @X0 1 r1 ]
 [f ]
-"15
-[; ;ADC.c: 15:     ANSEL = 0b00000001;
+"13
+[; ;ADC.c: 13:     ADCON1bits.ADFM = 0;
+[e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
+"14
+[; ;ADC.c: 14:     ANSEL = 0b00000001;
 [e = _ANSEL -> -> 1 `i `uc ]
-"16
-[; ;ADC.c: 16:     INTCON = 0b11101000;
+"15
+[; ;ADC.c: 15:     INTCON = 0b11101000;
 [e = _INTCON -> -> 232 `i `uc ]
-"17
-[; ;ADC.c: 17:     ADCON0 = 0b01000001;
+"16
+[; ;ADC.c: 16:     ADCON0 = 0b01000001;
 [e = _ADCON0 -> -> 65 `i `uc ]
-"19
-[; ;ADC.c: 19:     PIE1bits.ADIE = 1;
+"18
+[; ;ADC.c: 18:     PIE1bits.ADIE = 1;
 [e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
-"20
-[; ;ADC.c: 20:     PIR1bits.ADIF = 0;
+"19
+[; ;ADC.c: 19:     PIR1bits.ADIF = 0;
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"21
-[; ;ADC.c: 21:     if (flag == 1) {
+"20
+[; ;ADC.c: 20:     if (flag == 1) {
 [e $ ! == -> _flag `i -> 1 `i 139  ]
 {
-"22
-[; ;ADC.c: 22:         _delay((unsigned long)((20)*(8000000/4000000.0)));
+"21
+[; ;ADC.c: 21:         _delay((unsigned long)((20)*(8000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"23
-[; ;ADC.c: 23:         ADCON0bits.GO = 1;
+"22
+[; ;ADC.c: 22:         ADCON0bits.GO = 1;
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-"24
-[; ;ADC.c: 24:         flag = 0;
+"23
+[; ;ADC.c: 23:         flag = 0;
 [e = _flag -> -> 0 `i `uc ]
-"25
-[; ;ADC.c: 25:     }
+"24
+[; ;ADC.c: 24:     }
 }
 [e :U 139 ]
-"26
-[; ;ADC.c: 26: }
+"25
+[; ;ADC.c: 25: }
 [e :UE 138 ]
 }

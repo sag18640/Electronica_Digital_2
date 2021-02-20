@@ -2857,21 +2857,7 @@ void main(void) {
 
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1:   S2:    S3:");
-
-
-
-
-
-
-        Lcd_Set_Cursor(2, 11);
-                p = conversor2(valorT);
-        sprintf(s, "%3.2fC", p);
-        Lcd_Write_String(s);
-
-
-
-
-
+# 89 "main.c"
         _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTCbits.RC0 = 0;
         _delay((unsigned long)((1)*(8000000/4000.0)));
@@ -2880,7 +2866,23 @@ void main(void) {
         _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTCbits.RC0 = 1;
         _delay((unsigned long)((200)*(8000000/4000.0)));
-# 166 "main.c"
+        Lcd_Set_Cursor(2, 11);
+        p = conversor2(valorT);
+        sprintf(s, "%3.2fC", p);
+        Lcd_Write_String(s);
+# 111 "main.c"
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        PORTCbits.RC2 = 0;
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        SSPBUF = 2;
+        valorC = spiRead();
+        _delay((unsigned long)((1)*(8000000/4000.0)));
+        PORTCbits.RC2 = 1;
+        _delay((unsigned long)((200)*(8000000/4000.0)));
+        Lcd_Set_Cursor(2, 7);
+        sprintf(s, "%d", valorC);
+        Lcd_Write_String(s);
+# 170 "main.c"
     }
 }
 
@@ -2890,17 +2892,13 @@ void main(void) {
 void setup(void) {
     TRISD = 0b00000000;
     TRISC = 0b10010000;
-    PORTCbits.RC0 = 1;
-    PORTCbits.RC1 = 1;
-    PORTCbits.RC2 = 1;
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     ANSEL = 0b00000011;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
-    PORTB = 0b11111111;
-    INTCON = 0b11101000;
+    PORTB = 0;
 }
 
 
