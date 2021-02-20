@@ -28,7 +28,7 @@ intentry CODE 0 4 4 8 2
 dataCOMMON COMMON 1 79 79 1 1
 bssCOMMON COMMON 1 77 77 2 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+$C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -78,15 +78,15 @@ STRING D2-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\slave1.X.production.o
-F cinit CODE >803:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-F cinit CODE >806:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-F cinit CODE >829:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-14 cinit CODE >830:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-15 cinit CODE >834:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-16 cinit CODE >835:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-17 cinit CODE >841:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-17 cinit CODE >843:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
-18 cinit CODE >844:C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.s
+F cinit CODE >803:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+F cinit CODE >806:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+F cinit CODE >829:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+14 cinit CODE >830:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+15 cinit CODE >834:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+16 cinit CODE >835:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+17 cinit CODE >841:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+17 cinit CODE >843:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
+18 cinit CODE >844:C:\Users\SAGASTUME\AppData\Local\Temp\s2io.s
 4 intentry CODE >96:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\main.c
 C4 text7 CODE >30:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\SPI.c
 C4 text7 CODE >32:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave1.X\SPI.c
@@ -172,21 +172,21 @@ __Hspace_4 4010 0 ABS 0 - -
 spiInit@sTransmitEdge 76 0 COMMON 1 cstackCOMMON dist/default/production\slave1.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+___sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 _flag 79 0 COMMON 1 dataCOMMON dist/default/production\slave1.X.production.o
 _main 116 0 CODE 0 maintext dist/default/production\slave1.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\slave1.X.production.o
-start 18 0 CODE 0 init C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+start 18 0 CODE 0 init C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 __size_of_main 0 0 ABS 0 - dist/default/production\slave1.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
-intlevel0 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\slave1.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -200,8 +200,8 @@ __size_of_spiRead 0 0 ABS 0 - dist/default/production\slave1.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 ADC_con@flag 75 0 COMMON 1 cstackCOMMON dist/default/production\slave1.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\slave1.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
-___stacklo 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+___stackhi 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
+___stacklo 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 __LidataCOMMON 0 0 ABS 0 idataCOMMON -
 __size_of_setup 0 0 ABS 0 - dist/default/production\slave1.X.production.o
 spiInit@sDataSample 74 0 COMMON 1 cstackCOMMON dist/default/production\slave1.X.production.o
@@ -213,7 +213,7 @@ _SSPBUF 13 0 ABS 0 - dist/default/production\slave1.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\slave1.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\slave1.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\slave1.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+___int_sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -260,7 +260,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\slave1.X.production.o
 __HidataCOMMON 0 0 ABS 0 idataCOMMON -
 __end_of_ISR 98 0 CODE 0 text4 dist/default/production\slave1.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\SAGASTUME\AppData\Local\Temp\sp5o.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\SAGASTUME\AppData\Local\Temp\s2io.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\slave1.X.production.o
 __pmaintext 116 0 CODE 0 maintext dist/default/production\slave1.X.production.o
 __Lcommon 0 0 ABS 0 common -
