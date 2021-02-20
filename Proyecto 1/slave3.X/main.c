@@ -96,7 +96,8 @@ void setup(void) {
     //    TRISCbits.TRISC5 = 0;
 
     PORTC = 0;
-    PORTA = 0;
+    PORTAbits.RA0=0;
+//    PORTA = 0;
     PORTD = 0;
     SSPIF = 0;
     SSPIE = 1;

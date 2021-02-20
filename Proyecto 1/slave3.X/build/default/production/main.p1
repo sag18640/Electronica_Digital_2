@@ -45,9 +45,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "290
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
 [v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"166
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"172
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 172:     struct {
+[s S6 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S6 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"171
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 171: typedef union {
+[u S5 `S6 1 ]
+[n S5 . . ]
+"183
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 183: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
+[v _PORTAbits `VS5 ~T0 @X0 0 e@5 ]
 "352
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
@@ -502,84 +510,84 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 98:     PORTC = 0;
 [e = _PORTC -> -> 0 `i `uc ]
 "99
-[; ;main.c: 99:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
-"100
-[; ;main.c: 100:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;main.c: 99:     PORTAbits.RA0=0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
 "101
-[; ;main.c: 101:     SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
+[; ;main.c: 101:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "102
-[; ;main.c: 102:     SSPIE = 1;
+[; ;main.c: 102:     SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"103
+[; ;main.c: 103:     SSPIE = 1;
 [e = _SSPIE -> -> 1 `i `b ]
-"104
-[; ;main.c: 104:     INTCON = 0b11101000;
-[e = _INTCON -> -> 232 `i `uc ]
 "105
-[; ;main.c: 105: }
+[; ;main.c: 105:     INTCON = 0b11101000;
+[e = _INTCON -> -> 232 `i `uc ]
+"106
+[; ;main.c: 106: }
 [e :UE 147 ]
 }
-"112
-[; ;main.c: 112: double conversor(uint8_t val) {
+"113
+[; ;main.c: 113: double conversor(uint8_t val) {
 [v _conversor `(d ~T0 @X0 1 ef1`uc ]
 {
 [e :U _conversor ]
 [v _val `uc ~T0 @X0 1 r1 ]
 [f ]
-"113
-[; ;main.c: 113:     x = 1.95 * val;
-[e = _x -> * .1.95 -> -> _val `i `d `f ]
 "114
-[; ;main.c: 114:     return (x);
+[; ;main.c: 114:     x = 1.95 * val;
+[e = _x -> * .1.95 -> -> _val `i `d `f ]
+"115
+[; ;main.c: 115:     return (x);
 [e ) -> _x `d ]
 [e $UE 148  ]
-"115
-[; ;main.c: 115: }
+"116
+[; ;main.c: 116: }
 [e :UE 148 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"117
-[; ;main.c: 117: void __attribute__((picinterrupt(("")))) ISR(void) {
+"118
+[; ;main.c: 118: void __attribute__((picinterrupt(("")))) ISR(void) {
 [v _ISR `(v ~T2 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"118
-[; ;main.c: 118:     if (PIR1bits.ADIF == 1) {
+"119
+[; ;main.c: 119:     if (PIR1bits.ADIF == 1) {
 [e $ ! == -> . . _PIR1bits 0 6 `i -> 1 `i 150  ]
 {
-"119
-[; ;main.c: 119:         flag = 1;
-[e = _flag -> -> 1 `i `uc ]
 "120
-[; ;main.c: 120:         valor_MSB = ADRESH;
-[e = _valor_MSB _ADRESH ]
+[; ;main.c: 120:         flag = 1;
+[e = _flag -> -> 1 `i `uc ]
 "121
-[; ;main.c: 121:         PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;main.c: 121:         valor_MSB = ADRESH;
+[e = _valor_MSB _ADRESH ]
 "122
-[; ;main.c: 122:     }
+[; ;main.c: 122:         PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"123
+[; ;main.c: 123:     }
 }
 [e :U 150 ]
-"123
-[; ;main.c: 123:     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
+"124
+[; ;main.c: 124:     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
 [e $ ! && == -> . . _PIR1bits 0 3 `i -> 1 `i == -> . . _SSPSTATbits 0 0 `i -> 1 `i 151  ]
 {
-"124
-[; ;main.c: 124:         count = spiRead();
-[e = _count -> ( _spiRead ..  `uc ]
 "125
-[; ;main.c: 125:         spiWrite(valor_MSB);
-[e ( _spiWrite (1 -> _valor_MSB `uc ]
+[; ;main.c: 125:         count = spiRead();
+[e = _count -> ( _spiRead ..  `uc ]
 "126
-[; ;main.c: 126:         PIR1bits.SSPIF = 0;
+[; ;main.c: 126:         spiWrite(valor_MSB);
+[e ( _spiWrite (1 -> _valor_MSB `uc ]
+"127
+[; ;main.c: 127:         PIR1bits.SSPIF = 0;
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-"130
-[; ;main.c: 130:     }
+"131
+[; ;main.c: 131:     }
 }
 [e :U 151 ]
-"131
-[; ;main.c: 131: }
+"132
+[; ;main.c: 132: }
 [e :UE 149 ]
 }

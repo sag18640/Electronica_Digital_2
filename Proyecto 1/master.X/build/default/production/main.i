@@ -2831,6 +2831,7 @@ float x;
 float p;
 char s[20];
 
+
 uint8_t count = 0;
 uint8_t recibido;
 uint8_t enviado;
@@ -2847,42 +2848,37 @@ float conversor2(uint8_t val);
 
 void main(void) {
     setup();
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     Config_USARTT();
     recibir();
     Lcd_Init();
     Lcd_Clear();
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
 
     while (1) {
 
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1:   S2:    S3:");
-# 89 "main.c"
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        PORTCbits.RC0 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        SSPBUF = 0;
-        valorT = spiRead();
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        PORTCbits.RC0 = 1;
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-        Lcd_Set_Cursor(2, 11);
-        p = conversor2(valorT);
-        sprintf(s, "%3.2fC", p);
-        Lcd_Write_String(s);
-# 111 "main.c"
+# 114 "main.c"
+        if (valorC >= 0 && valorC < 10) {
+
+            Lcd_Set_Cursor(2, 8);
+            Lcd_Write_String("   ");
+
+        }
         _delay((unsigned long)((200)*(8000000/4000.0)));
         PORTCbits.RC2 = 0;
-        _delay((unsigned long)((1)*(8000000/4000.0)));
-        SSPBUF = 2;
+        _delay((unsigned long)((10)*(8000000/4000.0)));
+        spiWrite(0);
         valorC = spiRead();
-        _delay((unsigned long)((1)*(8000000/4000.0)));
+        _delay((unsigned long)((10)*(8000000/4000.0)));
         PORTCbits.RC2 = 1;
         _delay((unsigned long)((200)*(8000000/4000.0)));
         Lcd_Set_Cursor(2, 7);
         sprintf(s, "%d", valorC);
         Lcd_Write_String(s);
-# 170 "main.c"
+        _delay((unsigned long)((100)*(8000000/4000.0)));
+# 180 "main.c"
     }
 }
 
@@ -2895,7 +2891,11 @@ void setup(void) {
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     ANSEL = 0b00000011;
-    PORTC = 0;
+    PORTCbits.RC0 = 1;
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 0;
+    PORTCbits.RC6 = 0;
+    PORTCbits.RC7 = 0;
     PORTD = 0;
     PORTE = 0;
     PORTB = 0;

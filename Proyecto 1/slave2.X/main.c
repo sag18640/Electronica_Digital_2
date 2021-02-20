@@ -94,7 +94,7 @@ void __interrupt() ISR(void) {
     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
 
         a = spiRead();
-        spiWrite(0x3F);
+        spiWrite(count);
         PIR1bits.SSPIF = 0;
 
 

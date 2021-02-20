@@ -2729,22 +2729,14 @@ void main(void) {
 
 void setup(void) {
     TRISAbits.TRISA5 = 1;
-
     TRISD = 0b00000000;
     TRISC = 0b00011000;
-
-
     TRISB = 0b11111110;
-
-
-    TRISE = 0b00000000;
     IOCBbits.IOCB6 = 1;
     IOCBbits.IOCB7 = 1;
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
-
-    PORTE = 0;
     flag2 = 0;
     INTCON = 0b11101000;
 }
@@ -2758,7 +2750,7 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
 
         a = spiRead();
-        spiWrite(0x3F);
+        spiWrite(count);
         PIR1bits.SSPIF = 0;
 
 

@@ -34,7 +34,7 @@ bssBANK0 BANK0 1 50 50 8 1
 dataCOMMON COMMON 1 79 79 1 1
 bssCOMMON COMMON 1 77 77 2 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+$C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -84,24 +84,24 @@ STRING 689-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\slave3.X.production.o
-F cinit CODE >806:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-F cinit CODE >809:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-F cinit CODE >841:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-14 cinit CODE >842:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-15 cinit CODE >846:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-16 cinit CODE >847:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-17 cinit CODE >848:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-18 cinit CODE >849:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-19 cinit CODE >850:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1A cinit CODE >851:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1B cinit CODE >852:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1C cinit CODE >853:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1D cinit CODE >856:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1E cinit CODE >857:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1F cinit CODE >863:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-1F cinit CODE >865:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-20 cinit CODE >866:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
-4 intentry CODE >117:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+F cinit CODE >806:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+F cinit CODE >809:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+F cinit CODE >841:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+14 cinit CODE >842:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+15 cinit CODE >846:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+16 cinit CODE >847:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+17 cinit CODE >848:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+18 cinit CODE >849:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+19 cinit CODE >850:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1A cinit CODE >851:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1B cinit CODE >852:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1C cinit CODE >853:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1D cinit CODE >856:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1E cinit CODE >857:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1F cinit CODE >863:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+1F cinit CODE >865:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+20 cinit CODE >866:C:\Users\SAGASTUME\AppData\Local\Temp\smtg.s
+4 intentry CODE >118:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 67B text12 CODE >30:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 67B text12 CODE >32:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 681 text12 CODE >33:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
@@ -112,16 +112,16 @@ F cinit CODE >841:C:\Users\SAGASTUME\AppData\Local\Temp\shp8.s
 682 text10 CODE >35:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 683 text10 CODE >37:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 687 text10 CODE >38:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
-5CB text9 CODE >117:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 5CB text9 CODE >118:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5D1 text9 CODE >119:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5D3 text9 CODE >120:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5D7 text9 CODE >121:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5D8 text9 CODE >123:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5E2 text9 CODE >124:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5EA text9 CODE >125:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5F0 text9 CODE >126:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5F3 text9 CODE >131:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5CB text9 CODE >119:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5D1 text9 CODE >120:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5D3 text9 CODE >121:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5D7 text9 CODE >122:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5D8 text9 CODE >124:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5E2 text9 CODE >125:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5EA text9 CODE >126:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5F0 text9 CODE >127:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5F3 text9 CODE >132:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 641 text8 CODE >13:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\ADC.c
 642 text8 CODE >15:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\ADC.c
 646 text8 CODE >16:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\ADC.c
@@ -270,21 +270,21 @@ E6 text5 CODE >124:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\s
 436 text4 CODE >42:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
 437 text4 CODE >43:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
 43F text4 CODE >44:C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\xxtofl.c
-58B text3 CODE >112:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-58C text3 CODE >113:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5C2 text3 CODE >114:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-5CA text3 CODE >115:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+58B text3 CODE >113:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+58C text3 CODE >114:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5C2 text3 CODE >115:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+5CA text3 CODE >116:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 65F text2 CODE >90:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 65F text2 CODE >91:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 663 text2 CODE >93:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 664 text2 CODE >94:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 666 text2 CODE >98:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 669 text2 CODE >99:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-66A text2 CODE >100:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-66B text2 CODE >101:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-66C text2 CODE >102:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-66F text2 CODE >104:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
-671 text2 CODE >105:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+66A text2 CODE >101:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+66B text2 CODE >102:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+66C text2 CODE >103:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+66F text2 CODE >105:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
+671 text2 CODE >106:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\main.c
 623 text1 CODE >13:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 626 text1 CODE >15:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
 629 text1 CODE >16:C:\Users\SAGASTUME\Desktop\7mo semestre\digital 2\Informes\Electronica_Digital_2\Proyecto 1\slave3.X\SPI.c
@@ -338,11 +338,11 @@ __Hspace_4 4010 0 ABS 0 - -
 spiInit@sTransmitEdge 76 0 COMMON 1 cstackCOMMON dist/default/production\slave3.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+___sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 _flag 79 0 COMMON 1 dataCOMMON dist/default/production\slave3.X.production.o
 _main 880 0 CODE 0 maintext dist/default/production\slave3.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\slave3.X.production.o
-start 18 0 CODE 0 init C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+start 18 0 CODE 0 init C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 ___flmul@aexp 3C 0 BANK0 1 cstackBANK0 dist/default/production\slave3.X.production.o
 ___flmul@bexp 41 0 BANK0 1 cstackBANK0 dist/default/production\slave3.X.production.o
 ___flmul@prod 42 0 BANK0 1 cstackBANK0 dist/default/production\slave3.X.production.o
@@ -353,12 +353,12 @@ __size_of_main 0 0 ABS 0 - dist/default/production\slave3.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
-intlevel0 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\slave3.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -378,8 +378,8 @@ __Umul8_16 BF4 0 CODE 0 text6 dist/default/production\slave3.X.production.o
 __end_of___flmul 708 0 CODE 0 text5 dist/default/production\slave3.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\slave3.X.production.o
 __Umul8_16@multiplicand 74 0 COMMON 1 cstackCOMMON dist/default/production\slave3.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
-___stacklo 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+___stackhi 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
+___stacklo 0 0 ABS 0 - C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 __LidataCOMMON 0 0 ABS 0 idataCOMMON -
 __size_of_setup 0 0 ABS 0 - dist/default/production\slave3.X.production.o
 ___flmul@a 32 0 BANK0 1 cstackBANK0 dist/default/production\slave3.X.production.o
@@ -396,7 +396,7 @@ _SSPCON 14 0 ABS 0 - dist/default/production\slave3.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\slave3.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\slave3.X.production.o
 _conversor B16 0 CODE 0 text3 dist/default/production\slave3.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+___int_sp 0 0 STACK 2 stack C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -421,6 +421,7 @@ __Lbank3 0 0 ABS 0 bank3 -
 __Lcinit 1E 0 CODE 0 cinit -
 __Lstack 0 0 STACK 2 stack -
 ___flmul@grs 3D 0 BANK0 1 cstackBANK0 dist/default/production\slave3.X.production.o
+_PORTAbits 5 0 ABS 0 - dist/default/production\slave3.X.production.o
 _PORTDbits 8 0 ABS 0 - dist/default/production\slave3.X.production.o
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
@@ -451,7 +452,7 @@ __HidataCOMMON 0 0 ABS 0 idataCOMMON -
 ___xxtofl 708 0 CODE 0 text4 dist/default/production\slave3.X.production.o
 __end_of_ISR BF4 0 CODE 0 text9 dist/default/production\slave3.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\SAGASTUME\AppData\Local\Temp\shp8.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\SAGASTUME\AppData\Local\Temp\smtg.o
 __end_of___xxtofl 880 0 CODE 0 text4 dist/default/production\slave3.X.production.o
 __size_of___flge 0 0 ABS 0 - dist/default/production\slave3.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
@@ -515,7 +516,6 @@ __Hend_init 1E 0 CODE 0 end_init -
 ?_conversor 48 0 BANK0 1 cstackBANK0 dist/default/production\slave3.X.production.o
 __end_of_main 9CE 0 CODE 0 maintext dist/default/production\slave3.X.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\slave3.X.production.o
-_PORTA 5 0 ABS 0 - dist/default/production\slave3.X.production.o
 _PORTC 7 0 ABS 0 - dist/default/production\slave3.X.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\slave3.X.production.o
 _SSPIE 463 0 ABS 0 - dist/default/production\slave3.X.production.o

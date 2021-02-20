@@ -49,6 +49,7 @@ float vv;
 float x;
 float p;
 char s[20];
+//char l[20];
 
 uint8_t count = 0;
 uint8_t recibido;
@@ -66,11 +67,12 @@ float conversor2(uint8_t val);
 
 void main(void) {
     setup();
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     Config_USARTT();
     recibir();
     Lcd_Init();
     Lcd_Clear();
-    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+
 
     while (1) {
 
@@ -85,20 +87,22 @@ void main(void) {
 
         //
 
-
-        __delay_ms(1);
-        PORTCbits.RC0 = 0;
-        __delay_ms(1);
-        SSPBUF = 0;
-        valorT = spiRead();
-        __delay_ms(1);
-        PORTCbits.RC0 = 1;
-        __delay_ms(200);
-        Lcd_Set_Cursor(2, 11);
-        p = conversor2(valorT);
-        sprintf(s, "%3.2fC", p);
-        Lcd_Write_String(s);
-//        s = 0;
+        //
+        //        __delay_ms(1);
+        //        PORTCbits.RC0 = 0;
+        //        __delay_ms(1);
+        //        SSPBUF = 0;
+        //        valorT = spiRead();
+        //        enviar(250);
+        //        __delay_ms(1);
+        //        PORTCbits.RC0 = 1;
+        //        PORTCbits.RC0 = 1;
+        //        __delay_ms(200);
+        //        Lcd_Set_Cursor(2, 11);
+        //        p = conversor2(valorT);
+        //        sprintf(s, "%3.2fC", p);
+        //        Lcd_Write_String(s);
+        //        s = 0;
 
         //        __delay_ms(200);
         //        PORTCbits.RC1 = 0;
@@ -107,19 +111,25 @@ void main(void) {
         //        valorA = spiRead();
         //        __delay_ms(1);
         //        PORTCbits.RC1 = 1;
+        if (valorC >= 0 && valorC < 10) {//limpiamos los espacios de decenas y 
+            //centenas si en caso no se necesitaran
+            Lcd_Set_Cursor(2, 8);
+            Lcd_Write_String("   ");
 
+        }
         __delay_ms(200);
         PORTCbits.RC2 = 0;
-        __delay_ms(1);
-        SSPBUF = 2;
+        __delay_ms(10);
+        spiWrite(0);
         valorC = spiRead();
-        __delay_ms(1);
+        __delay_ms(10);
         PORTCbits.RC2 = 1;
         __delay_ms(200);
         Lcd_Set_Cursor(2, 7);
         sprintf(s, "%d", valorC);
         Lcd_Write_String(s);
-//        s = 0;
+        __delay_ms(100);
+        //        s = 0;
 
 
         //        v = conversor(valorA);
@@ -179,7 +189,11 @@ void setup(void) {
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     ANSEL = 0b00000011;
-    PORTC = 0; //limpiamos puertos
+    PORTCbits.RC0 = 1; //limpiamos puertos
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC2 = 0;
+    PORTCbits.RC6 = 0;
+    PORTCbits.RC7 = 0;
     PORTD = 0;
     PORTE = 0;
     PORTB = 0;
