@@ -26,8 +26,9 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-#include<stdint.h>
+#include <stdio.h>
 #include <xc.h>
+#include<stdint.h>
 #include "SPI.h"
 //******************************************************************************
 //  Variables
@@ -36,6 +37,7 @@ uint8_t count;
 uint8_t flag = 1;
 uint8_t flag2;
 uint8_t a;
+char s[20];
 #define _XTAL_FREQ 8000000
 
 
@@ -91,8 +93,8 @@ void setup(void) {
 //******************************************************************************
 
 void __interrupt() ISR(void) {
-    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
-        
+    if (PIR1bits.SSPIF == 1 ) {
+//        sprintf(s, "%d", count);
         a = spiRead();
         spiWrite(count);
         PIR1bits.SSPIF = 0;
