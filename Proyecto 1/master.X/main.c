@@ -42,22 +42,19 @@ uint8_t retorno;
 int8_t valorT = 0;
 uint8_t valorC = 0;
 uint8_t valorA = 0;
-//double valor1;
-//double valor2;
 float v;
 float vv;
 float x;
 float p;
-char s[25];
-char l[25];
+char s[20];
+char l[20];
+char k[20];
 uint8_t count = 0;
-uint8_t recibido;
-uint8_t enviado;
 //******************************************************************************
 //  Prototipo de funciones
 //******************************************************************************
 void setup(void);
-void __interrupt() ISR(void);
+//void __interrupt() ISR(void);
 float conversor(uint8_t x);
 float conversor2(uint8_t val);
 //******************************************************************************
@@ -74,19 +71,17 @@ void main(void) {
 
 
     while (1) {
-        //        PORTA = 0b00000110;
-        //        __delay_ms(2000);
-        //        PORTA = 0b00000111;
-        //        PORTA = 0b00000101;
-        //        __delay_ms(2000);
-        //        PORTA = 0b00000111;
-        //        PORTA = 0b00000011;
-        //        __delay_ms(2000);
-        //        PORTA = 0b00000111;
         Lcd_Set_Cursor(1, 1); //colocamos el cursor en posicón 1,1
         Lcd_Write_String("S1:   S2:    S3:"); //escribimos los encabezados
+        enviar("S1:");
+        enviar(l);
+        enviar("S2:");
+        enviar(k);
+        enviar("S3:");
+        enviar(s);
 
-        //        __delay_ms(1);
+        //lm35
+        __delay_ms(1);
         PORTA = 0b00000110;
         __delay_ms(100);
         SSPBUF = 0;
@@ -94,43 +89,45 @@ void main(void) {
         //        enviar(250);
         __delay_ms(1);
         PORTA = 0b00000111;
-        __delay_ms(200);
-        Lcd_Set_Cursor(2, 11);
+        //        __delay_ms(200);
+        Lcd_Set_Cursor(2, 13);
         p = conversor2(valorT);
-        sprintf(s, "%3.2fC", p);
+        sprintf(s, "%3.0fC", p);
         Lcd_Write_String(s);
 
-
-        __delay_ms(200);
+        //ADC
+        __delay_ms(1);
         PORTA = 0b00000101;
         __delay_ms(100);
         SSPBUF = 1;
         valorA = spiRead();
-        __delay_ms(10);
+        __delay_ms(1);
         PORTA = 0b00000111;
         Lcd_Set_Cursor(2, 1); //colocamos el cursor en posición 2,1
         v = conversor(valorA);
-        sprintf(s, "%3.2fV", v);
-        enviar(s);
-        Lcd_Write_String(s);
-
-
-        //        if (valorC >= 0 && valorC < 10) {//limpiamos los espacios de decenas y 
-        //            //centenas si en caso no se necesitaran
-        //            Lcd_Set_Cursor(2, 8);
-        //            Lcd_Write_String("   ");
-        //        }
-        __delay_ms(200);
+        sprintf(l, "%3.2fV", v);
+        //        enviar(s);
+        Lcd_Write_String(l);
+        //        
+        //
+        if (valorC >= 0 && valorC < 10) {//limpiamos los espacios de decenas y 
+            //centenas si en caso no se necesitaran
+            Lcd_Set_Cursor(2, 8);
+            Lcd_Write_String("   ");
+        }
+        // contador
+        __delay_ms(1);
         PORTA = 0b00000011;
         __delay_ms(100);
         SSPBUF = 2;
         valorC = spiRead();
-        __delay_ms(10);
+        __delay_ms(1);
         PORTA = 0b00000111;
         Lcd_Set_Cursor(2, 7);
-        sprintf(l, "%f", valorC);
-        Lcd_Write_String(l);
-        __delay_ms(100);
+        sprintf(k, "%d", valorC);
+        Lcd_Write_String(k);
+//        enviar(k);
+                __delay_ms(100);
 
     }
 }
@@ -167,8 +164,8 @@ float conversor(uint8_t val) {
     return (x);
 }
 
-float conversor2(uint8_t val) {
-    vv = 1.95 * val;
+float conversor2(uint8_t val2) {
+    vv = 1.95 * val2;
     return (vv);
 }
 
@@ -176,13 +173,3 @@ float conversor2(uint8_t val) {
 //  Interrupciones
 //******************************************************************************
 
-void __interrupt() ISR(void) {
-    if (PIR1bits.RCIF == 1) {//verificamos si fue interrupcion de la recepción USART
-        if (RCSTAbits.OERR == 1) {//verificamos si hubo algún error de overrun
-            RCSTAbits.CREN = 0;
-            __delay_us(300);
-        } else {
-            recibido = RCREG; //guardamos el valor recibido en una variable
-        }
-    }
-}

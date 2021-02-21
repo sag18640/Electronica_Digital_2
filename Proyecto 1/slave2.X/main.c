@@ -26,18 +26,18 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-#include <stdio.h>
-#include <xc.h>
 #include<stdint.h>
+#include <xc.h>
 #include "SPI.h"
 //******************************************************************************
 //  Variables
 //******************************************************************************
 uint8_t count;
 uint8_t flag = 1;
-uint8_t flag2;
-uint8_t a;
-char s[20];
+uint8_t count2 = 0;
+uint8_t valor_MSB;
+
+
 #define _XTAL_FREQ 8000000
 
 
@@ -54,16 +54,13 @@ void __interrupt() ISR(void);
 
 void main(void) {
     setup();
-    count = 0;
-    flag = 1;
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-    while (1) {
+    count = 0;
+    flag = 0;
 
-        //se le da el valor constantemente a puerto D
+    while (1) {
         PORTD = count;
 
-        //comparación para alarma visual si la resolución del ADC es mayor
-        //al contador de 8 bits
     }
 
 }
@@ -74,16 +71,17 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
-    TRISAbits.TRISA5 = 1;
-    TRISD = 0b00000000; //puerto D como salida contador leds
-    TRISC = 0b00011000; //puerto C como salida display
-    TRISB = 0b11111110; //puerto B como entradas a excepción del pin 0 como-
+    TRISB = 0b11111111;
+    TRISA = 0b11111111;
+    TRISD = 0b00000000;
+    TRISC = 0b00011000;
+
+    PORTB = 0;
+
     IOCBbits.IOCB6 = 1;
     IOCBbits.IOCB7 = 1;
-    PORTB = 0; //limpiamos puertos
-    PORTC = 0;
-    PORTD = 0;
-    flag2 = 0;
+    SSPIF = 0;
+    SSPIE = 1;
     INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
 }
 
@@ -93,35 +91,18 @@ void setup(void) {
 //******************************************************************************
 
 void __interrupt() ISR(void) {
-    if (PIR1bits.SSPIF == 1 ) {
-//        sprintf(s, "%d", count);
-        a = spiRead();
-        spiWrite(count);
-        PIR1bits.SSPIF = 0;
-
-
-    }
-    if (INTCONbits.RBIF == 1) {//verificamos si fue interrupt on change
-        if (PORTBbits.RB6 == 0) {//antirebote aumentar
-            while (flag2 == 0) {
-                if (PORTBbits.RB6 == 1) {
-                    flag2 = 1;
-                }
-            }
-            flag2 = 0;
+    if (INTCONbits.RBIF == 1) {//verificamos si fue interrupt ADC
+        if (PORTBbits.RB6 == 0) {
             count++;
-
-        } else if (PORTBbits.RB7 == 0) { //antirebote disminuir
-            while (flag2 == 0) {
-                if (PORTBbits.RB7 == 1) {
-                    flag2 = 1;
-                }
-            }
-            flag2 = 0;
+        } else if (PORTBbits.RB7 == 0) {
             count--;
-
         }
+        INTCONbits.RBIF = 0;
     }
-    INTCONbits.RBIF = 0; //apagamos la bandera de interrupt on change
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
+        count2 = spiRead();
+        spiWrite(count);
+        PIR1bits.SSPIF = 0; 
+ 
+    }
 }
-

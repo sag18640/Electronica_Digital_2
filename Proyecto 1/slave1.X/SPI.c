@@ -37,14 +37,6 @@ void spiWrite(char dat)  //Write data to SPI bus
     SSPBUF = dat;
 }
 
-unsigned spiDataReady() //Check whether the data is ready to read
-{
-    if(SSPSTATbits.BF)
-        return 1;
-    else
-        return 0;
-}
-
 char spiRead() //REad the received data
 {
     spiReceiveWait();        // wait until the all bits receive

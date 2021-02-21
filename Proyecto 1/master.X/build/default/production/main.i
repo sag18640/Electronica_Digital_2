@@ -2829,16 +2829,15 @@ float v;
 float vv;
 float x;
 float p;
-char s[25];
-char l[25];
+char s[20];
+char l[20];
+char k[20];
 uint8_t count = 0;
-uint8_t recibido;
-uint8_t enviado;
 
 
 
 void setup(void);
-void __attribute__((picinterrupt(("")))) ISR(void);
+
 float conversor(uint8_t x);
 float conversor2(uint8_t val);
 
@@ -2855,11 +2854,18 @@ void main(void) {
 
 
     while (1) {
-# 86 "main.c"
+# 85 "main.c"
         Lcd_Set_Cursor(1, 1);
         Lcd_Write_String("S1:   S2:    S3:");
+        enviar("S1:");
+        enviar(l);
+        enviar("S2:");
+        enviar(k);
+        enviar("S3:");
+        enviar(s);
 
 
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTA = 0b00000110;
         _delay((unsigned long)((100)*(8000000/4000.0)));
         SSPBUF = 0;
@@ -2867,43 +2873,45 @@ void main(void) {
 
         _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTA = 0b00000111;
-        _delay((unsigned long)((200)*(8000000/4000.0)));
-        Lcd_Set_Cursor(2, 11);
+
+        Lcd_Set_Cursor(2, 13);
         p = conversor2(valorT);
-        sprintf(s, "%3.2fC", p);
+        sprintf(s, "%3.0fC", p);
         Lcd_Write_String(s);
 
 
-        _delay((unsigned long)((200)*(8000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTA = 0b00000101;
         _delay((unsigned long)((100)*(8000000/4000.0)));
         SSPBUF = 1;
         valorA = spiRead();
-        _delay((unsigned long)((10)*(8000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTA = 0b00000111;
         Lcd_Set_Cursor(2, 1);
         v = conversor(valorA);
-        sprintf(s, "%3.2fV", v);
-        enviar(s);
-        Lcd_Write_String(s);
+        sprintf(l, "%3.2fV", v);
+
+        Lcd_Write_String(l);
 
 
+        if (valorC >= 0 && valorC < 10) {
 
+            Lcd_Set_Cursor(2, 8);
+            Lcd_Write_String("   ");
+        }
 
-
-
-
-        _delay((unsigned long)((200)*(8000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTA = 0b00000011;
         _delay((unsigned long)((100)*(8000000/4000.0)));
         SSPBUF = 2;
         valorC = spiRead();
-        _delay((unsigned long)((10)*(8000000/4000.0)));
+        _delay((unsigned long)((1)*(8000000/4000.0)));
         PORTA = 0b00000111;
         Lcd_Set_Cursor(2, 7);
-        sprintf(l, "%f", valorC);
-        Lcd_Write_String(l);
-        _delay((unsigned long)((100)*(8000000/4000.0)));
+        sprintf(k, "%d", valorC);
+        Lcd_Write_String(k);
+
+                _delay((unsigned long)((100)*(8000000/4000.0)));
 
     }
 }
@@ -2940,22 +2948,7 @@ float conversor(uint8_t val) {
     return (x);
 }
 
-float conversor2(uint8_t val) {
-    vv = 1.95 * val;
+float conversor2(uint8_t val2) {
+    vv = 1.95 * val2;
     return (vv);
-}
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void) {
-    if (PIR1bits.RCIF == 1) {
-        if (RCSTAbits.OERR == 1) {
-            RCSTAbits.CREN = 0;
-            _delay((unsigned long)((300)*(8000000/4000000.0)));
-        } else {
-            recibido = RCREG;
-        }
-    }
 }

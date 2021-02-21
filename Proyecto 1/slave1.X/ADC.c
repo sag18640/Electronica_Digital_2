@@ -20,6 +20,6 @@ void ADC_con(uint8_t flag) {
     if (flag == 1) {
         __delay_us(20);
         ADCON0bits.GO = 1; //se indica que empiece a convertir al ADC
-        flag = 0;
+        flag = 0; 
     }
 }
