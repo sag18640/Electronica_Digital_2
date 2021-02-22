@@ -53,11 +53,13 @@ void __interrupt() ISR(void);
 //******************************************************************************
 
 void main(void) {
+    //configuración de los puertos y comunicaicón SPI
     setup();
     count = 0;
     flag = 1;
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     while (1) {
+        //llamamos a la configuración del ADC
         ADC_con(flag);
 
     }
@@ -94,14 +96,10 @@ void __interrupt() ISR(void) {
         valor_MSB = ADRESH;
         PORTD = valor_MSB;
         PIR1bits.ADIF = 0; //apagamos la bandera de ADC
-    }
-    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
-        count = spiRead();
-        spiWrite(v alor_MSB);
-        PIR1bits.SSPIF = 0;
-
-
-
-
+    }//verificamos si fue interrupción por recepción
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) { 
+        count = spiRead();//guardamos el dato recibido
+        spiWrite(valor_MSB);//mandamos el valor del ADC al master
+        PIR1bits.SSPIF = 0;//pagamos bandera de recepción
     }
 }

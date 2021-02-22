@@ -4,7 +4,7 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-typedef enum 
+typedef enum //configuración corta de tipo de SPI slave/master
 {
     SPI_MASTER_OSC_DIV4  = 0b00100000,
     SPI_MASTER_OSC_DIV16 = 0b00100001,
@@ -14,19 +14,19 @@ typedef enum
     SPI_SLAVE_SS_DIS     = 0b00100101
 }Spi_Type;
 
-typedef enum
+typedef enum //configuración corta de transmisión
 {
     SPI_DATA_SAMPLE_MIDDLE   = 0b00000000,
     SPI_DATA_SAMPLE_END      = 0b10000000
 }Spi_Data_Sample;
 
-typedef enum
+typedef enum//configuración corta de en que debe enviarse si flanco + o - (clk)
 {
     SPI_CLOCK_IDLE_HIGH  = 0b00010000,
     SPI_CLOCK_IDLE_LOW   = 0b00000000        
 }Spi_Clock_Idle;
 
-typedef enum
+typedef enum//configuración corta del eje de transmisión
 {
     SPI_IDLE_2_ACTIVE    = 0b00000000,
     SPI_ACTIVE_2_IDLE    = 0b01000000

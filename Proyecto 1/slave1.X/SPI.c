@@ -1,4 +1,4 @@
- /*
+/*
  * File            : spi.c
  * Author          : Ligo George
  * Company         : electroSome
@@ -9,24 +9,24 @@
  */
 
 #include "SPI.h"
-
+//función de inicialización SPI
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge)
-{
+{   //se coloca el SDO como output
     TRISC5 = 0;
-    if(sType & 0b00000100) //If Slave Mode
+    if(sType & 0b00000100) //If Slave Mode se hace mascará de bits
     {
-        SSPSTAT = sTransmitEdge;
-        TRISC3 = 1;
+        SSPSTAT = sTransmitEdge;//se carga el valor del eje de transmisión 
+        TRISC3 = 1;//coloca CLK como input
     }
     else              //If Master Mode
     {
-        SSPSTAT = sDataSample | sTransmitEdge;
-        TRISC3 = 0;
+        SSPSTAT = sDataSample | sTransmitEdge; //se carga una mascara de datos
+        TRISC3 = 0;//coloca CLK como output
     }
-   
+   //se carga mascara al SSPCON con los valores de configuración
     SSPCON = sType | sClockIdle;
 }
-
+//función de verificación de recepción de dato
 static void spiReceiveWait()
 {
     while ( !SSPSTATbits.BF ); // Wait for Data Transmit/Receipt complete
@@ -34,10 +34,10 @@ static void spiReceiveWait()
 
 void spiWrite(char dat)  //Write data to SPI bus
 {
-    SSPBUF = dat;
+    SSPBUF = dat; //cargar el valor al buffer
 }
 
-char spiRead() //REad the received data
+char spiRead() //Resad the received data
 {
     spiReceiveWait();        // wait until the all bits receive
     return(SSPBUF); // read the received data from the buffer

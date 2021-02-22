@@ -1,4 +1,4 @@
-/*
+ /*
  * File:   LCD.c
  * Author: electroSome.com
  * Editor: Cristopher Sagastume

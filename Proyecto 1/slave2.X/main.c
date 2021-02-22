@@ -53,12 +53,14 @@ void __interrupt() ISR(void);
 //******************************************************************************
 
 void main(void) {
+    //configuramos puertos y comunicación SPI
     setup();
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     count = 0;
     flag = 0;
 
     while (1) {
+        //cargamos constantemente el valor del contador al puerto D
         PORTD = count;
 
     }
@@ -71,6 +73,7 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
+    //configuramos los puertos y los pines de comunicación SPI
     TRISB = 0b11111111;
     TRISA = 0b11111111;
     TRISD = 0b00000000;
@@ -78,7 +81,7 @@ void setup(void) {
 
     PORTB = 0;
 
-    IOCBbits.IOCB6 = 1;
+    IOCBbits.IOCB6 = 1;//configuramos pines que generan interrupcion
     IOCBbits.IOCB7 = 1;
     SSPIF = 0;
     SSPIE = 1;
@@ -91,18 +94,18 @@ void setup(void) {
 //******************************************************************************
 
 void __interrupt() ISR(void) {
-    if (INTCONbits.RBIF == 1) {//verificamos si fue interrupt ADC
-        if (PORTBbits.RB6 == 0) {
-            count++;
-        } else if (PORTBbits.RB7 == 0) {
-            count--;
+    if (INTCONbits.RBIF == 1) {//verificamos si fue interrupt on change
+        if (PORTBbits.RB6 == 0) {// fue el botón de aumentar?
+            count++; //aumentamos contador
+        } else if (PORTBbits.RB7 == 0) {//fue el botón de disminuir
+            count--;//disminuimos contador
         }
-        INTCONbits.RBIF = 0;
-    }
-    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
+        INTCONbits.RBIF = 0;//apagamos la bandera de interrupción por cambio
+    }//verificamos si fue interrupción por recepción
+    if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) { 
         count2 = spiRead();
         spiWrite(count);
-        PIR1bits.SSPIF = 0; 
+        PIR1bits.SSPIF = 0; //pagamos bandera de recepción
  
     }
 }

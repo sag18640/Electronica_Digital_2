@@ -54,7 +54,6 @@ uint8_t count = 0;
 //  Prototipo de funciones
 //******************************************************************************
 void setup(void);
-//void __interrupt() ISR(void);
 float conversor(uint8_t x);
 float conversor2(uint8_t val);
 //******************************************************************************
@@ -62,10 +61,10 @@ float conversor2(uint8_t val);
 //******************************************************************************
 
 void main(void) {
+    //configuramos los puertos, comunicacióne, LCD y limpiamos LCD
     setup();
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     Config_USARTT();
-    recibir();
     Lcd_Init();
     Lcd_Clear();
 
@@ -80,22 +79,20 @@ void main(void) {
         enviar("S3:");
         enviar(s);
 
-        //lm35
+        //Recepción de datos ADC slave 3
         __delay_ms(1);
         PORTA = 0b00000110;
         __delay_ms(100);
-        SSPBUF = 0;
-        valorT = spiRead();
-        //        enviar(250);
+        SSPBUF = 0; //se escribe la señal al slave
+        valorT = spiRead();//se lee datos datos del slave
         __delay_ms(1);
         PORTA = 0b00000111;
-        //        __delay_ms(200);
         Lcd_Set_Cursor(2, 13);
         p = conversor2(valorT);
         sprintf(s, "%3.0fC", p);
         Lcd_Write_String(s);
 
-        //ADC
+        
         __delay_ms(1);
         PORTA = 0b00000101;
         __delay_ms(100);
@@ -106,16 +103,15 @@ void main(void) {
         Lcd_Set_Cursor(2, 1); //colocamos el cursor en posición 2,1
         v = conversor(valorA);
         sprintf(l, "%3.2fV", v);
-        //        enviar(s);
         Lcd_Write_String(l);
-        //        
-        //
-        if (valorC >= 0 && valorC < 10) {//limpiamos los espacios de decenas y 
-            //centenas si en caso no se necesitaran
+
+        
+       //limpiamos los espacios de decenas y centenas si en caso no se necesitaran
+        if (valorC >= 0 && valorC < 10) { 
             Lcd_Set_Cursor(2, 8);
             Lcd_Write_String("   ");
         }
-        // contador
+        // Recepción de datos contador slave 2
         __delay_ms(1);
         PORTA = 0b00000011;
         __delay_ms(100);
@@ -126,7 +122,6 @@ void main(void) {
         Lcd_Set_Cursor(2, 7);
         sprintf(k, "%d", valorC);
         Lcd_Write_String(k);
-//        enviar(k);
                 __delay_ms(100);
 
     }
@@ -136,8 +131,8 @@ void main(void) {
 //******************************************************************************
 
 void setup(void) {
-    TRISD = 0b00000000; // puerto D como salida
-    TRISC = 0b10010000; //activamos el RX como entrada
+    TRISD = 0b00000000; // puerto D como salida LCD
+    TRISC = 0b10010000; //activamos el RX como entrada y config SPI
     TRISE = 0b00000000;
     TRISB = 0b00000000;
     TRISA = 0b00000000;
@@ -147,7 +142,7 @@ void setup(void) {
     PORTCbits.RC2 = 1;
     PORTCbits.RC6 = 0;
     PORTCbits.RC7 = 0;
-    PORTA = 0b11111111;
+    PORTA = 0b111 11111;
     PORTD = 0;
     PORTE = 0;
     PORTB = 0;
@@ -159,12 +154,12 @@ void setup(void) {
 //******************************************************************************
 //
 
-float conversor(uint8_t val) {
-    x = 0.0195 * val; //5V/256bits=0.0195 convertir de bits a voltaje
+float conversor(uint8_t val) { //conversión del ADC slave1 a valores decimales
+    x = 0.0195 * val; 
     return (x);
 }
 
-float conversor2(uint8_t val2) {
+float conversor2(uint8_t val2) {//conversión del ADC slave2 a valores decimales
     vv = 1.95 * val2;
     return (vv);
 }

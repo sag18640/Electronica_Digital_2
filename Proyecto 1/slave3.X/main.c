@@ -53,29 +53,35 @@ double conversor(uint8_t val);
 //******************************************************************************
 
 void main(void) {
+    //configuramos puertos y comunicación SPI
     setup();
     count = 0;
     flag = 1;
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     while (1) {
+        //llamamos a la configuración del ADC
         ADC_con(flag);
+        //convertimos el valor del ADC a flotante
         valor = conversor(valor_MSB);
 
+        //verificamso si el valor obtenido del ADC es menor a 25 para encender
+        //led verde
         if (valor < 25) {
             PORTDbits.RD2 = 1;
             PORTDbits.RD1 = 0;
             PORTDbits.RD0 = 0;
-            //            __delay_ms(500);
+        //verificamso si el valor obtenido del ADC es mayor a 25 y menor a 36
+        // para encender led amarillo
         } else if (valor > 25 && valor < 36) {
             PORTDbits.RD2 = 0;
             PORTDbits.RD1 = 1;
             PORTDbits.RD0 = 0;
-            //            __delay_ms(500);
+        //verificamso si el valor obtenido del ADC es mayor a 36 para encender
+        //led rojo
         } else if (valor > 36) {
             PORTDbits.RD2 = 0;
             PORTDbits.RD1 = 0;
             PORTDbits.RD0 = 1;
-            //            __delay_ms(500);
         }
 
     }
@@ -89,27 +95,23 @@ void main(void) {
 
 void setup(void) {
     TRISA = 0b11111111;
-//    PORTAbits.RA5 = 1;
     TRISD = 0b00000000; //puerto D como salida contador leds
-    TRISC = 0b00011000;
-    //    TRISCbits.TRISC3 = 1;
-    //    TRISCbits.TRISC5 = 0;
-
+    TRISC = 0b00011000;//configuramos la comunicación SPI
+    //limpiamos los puertos
     PORTC = 0;
-    PORTAbits.RA0=0;
-//    PORTA = 0;
+    PORTAbits.RA0 = 0;
     PORTD = 0;
     SSPIF = 0;
     SSPIE = 1;
 
-    INTCON = 0b11101000; //se configuran las interrupciones GIE, PIE, T0IE y RBIE
+    INTCON = 0b11101000;//se configuran las interrupciones GIE, PIE, T0IE y RBIE
 }
 
 
 //******************************************************************************
 //  Funciones
 //******************************************************************************
-
+//función de conversión del ADC a flotante
 double conversor(uint8_t val) {
     x = 1.95 * val;
     return (x);
@@ -120,13 +122,10 @@ void __interrupt() ISR(void) {
         flag = 1;
         valor_MSB = ADRESH;
         PIR1bits.ADIF = 0; //apagamos la bandera de ADC
-    }
+    }//verificamos si fue interrupción por recepción
     if (PIR1bits.SSPIF == 1 && SSPSTATbits.BF == 1) {
         count = spiRead();
         spiWrite(valor_MSB);
-        PIR1bits.SSPIF = 0;
-
-
-
+        PIR1bits.SSPIF = 0;//pagamos bandera de recepción
     }
 }
