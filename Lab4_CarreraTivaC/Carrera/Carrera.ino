@@ -1,16 +1,8 @@
-/*
-  Blink
-  The basic Energia example.
-  Turns on an LED on for one second, then off for one second, repeatedly.
-  Change the LED define to blink other LEDs.
+//Cristopher Sagastume 18640
+//Lab4_Carrera
+//21/03/2021
 
-  Hardware Required:
-    LaunchPad with an LED
-
-  This example code is in the public domain.
-*/
-
-// most launchpads have a red LED
+// Creación de variables y se definen los Led RGB
 #define LED RED_LED
 #define LED1 GREEN_LED
 const int SW1 = PUSH1;
@@ -23,12 +15,10 @@ char flagJ2 = 0;
 char flagJuego = 0;
 char count = 0;
 char count2 = 0;
-//see pins_energia.h for more LED definitions
-//#define LED GREEN_LED
 
-// the setup routine runs once when you press reset:
+
+// Se configuran los pines y los led como salidas y botones como PULLUP
 void setup() {
-  // initialize the digital pin as an output.
   pinMode(LED, OUTPUT);
   pinMode(LED1, OUTPUT);
 
@@ -55,7 +45,7 @@ void setup() {
 
 }
 
-// the loop routine runs over and over again forever:
+// Rutina de loop infinito
 void loop() {
   //lectura del estado del boton
   SW1State = digitalRead(SW1);
@@ -111,10 +101,8 @@ void loop() {
           digitalWrite(LED, LOW);
           flagJuego = 1;
         }
-
-
-
       }
+      //antirebote jugador 2
       else if (SW2State == LOW) {
         while (flag == 0) {
           SW1State = digitalRead(SW1);
@@ -123,28 +111,22 @@ void loop() {
             flag = 1;
           }
         }
+        //aumento de contador jugador 2 y encendido de leds
         count2++;
         J2();
+        //revisión si ganó jugador 2
         if (count2 == 8) {
 
           digitalWrite(LED1, HIGH);
           delay(2000);
           digitalWrite(LED1, LOW);
-          flagJuego = 1;
+          flagJuego = 1; 
         }
-
-
-
       }
     }
-
-
   }
-
-
-
 }
-
+//formato de semaforo ROJO-AMARILLO-VERDE
 void semaforo() {
   digitalWrite(LED, HIGH);
   delay(1000);
@@ -163,7 +145,7 @@ void semaforo() {
 }
 
 void J1() {
-
+  //encender leds por decada jugador 1
   switch (count) {
     case 0:
       digitalWrite(PE_3, LOW);
@@ -258,7 +240,7 @@ void J1() {
   }
 }
 void J2() {
-
+  //encender leds por decada jugador 2
   switch (count2) {
     case 0:
       digitalWrite(PA_7, LOW);
