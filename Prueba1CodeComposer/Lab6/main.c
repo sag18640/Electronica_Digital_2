@@ -1,3 +1,5 @@
+//Cristopher Sagastume 18640
+
 #include <stdint.h>
 #include <stdbool.h>
 #include "inc/hw_types.h"
@@ -6,6 +8,7 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/debug.h"
 #include "driverlib/gpio.h"
+
 volatile uint32_t i;
 
 int main (void){
@@ -58,9 +61,7 @@ int main (void){
             GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1,0x02);
             for (i=0;i<2000000;i++){}
 
-            //Se apaga el led rojo
-            GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_3|GPIO_PIN_2|GPIO_PIN_1,0x00);
-            for (i=0;i<2000000;i++){}
+
         }
 
     }
