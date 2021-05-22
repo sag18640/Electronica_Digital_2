@@ -57,11 +57,11 @@ int main (void){
 
 
     //Se configura la comunicacion UART
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART1);//Se habilita el UART0
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);//Se habilita el puerto del UART0
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART1);//Se habilita el UART1
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);//Se habilita el puerto del UART1
     GPIOPinConfigure(GPIO_PB0_U1RX);
     GPIOPinConfigure(GPIO_PB1_U1TX);
-    GPIOPinTypeUART(GPIO_PORTB_BASE, GPIO_PIN_0 |GPIO_PIN_1); //definicion de los pines del UART0
+    GPIOPinTypeUART(GPIO_PORTB_BASE, GPIO_PIN_0 |GPIO_PIN_1); //definicion de los pines del UART1
     UARTClockSourceSet(UART1_BASE, UART_CLOCK_PIOSC);
     //Configuracion de UART0 a 115200 con 8 bits de datos y 1 de stop sin pariedad
     UARTConfigSetExpClk(UART1_BASE, 16000000, 115200, (UART_CONFIG_WLEN_8 | UART_CONFIG_STOP_ONE |UART_CONFIG_PAR_NONE));
@@ -80,7 +80,7 @@ int main (void){
         {
             SysCtlDelay(500000);    //ESPERO 500 MS PARA EL ANTIRREBOTE
             while (!GPIOPinRead(GPIO_PORTD_BASE, GPIO_PIN_2)){}
-            //Si El parqueo esta desocupado se pone Libre
+            //Si El parqueo esta ocupado se pone Libre
             if (flag == 1)
             {
                 GPIOPinWrite(GPIO_PORTA_BASE, GPIO_PIN_2, 0x00);

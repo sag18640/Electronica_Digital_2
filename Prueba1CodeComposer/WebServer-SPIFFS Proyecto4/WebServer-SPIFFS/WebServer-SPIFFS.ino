@@ -111,12 +111,12 @@ void loop() {
       count++;
     }
     //en todo este bloque verificamos que dato se recibio para modificar las banderas de estado de parqueo que nos servirá para identificar en el web server que parqueo tuvo un cambio
-    if (Led2 == 2) { //parqueo 1 disponible
+    if (Led2 == 2) { //parqueo 1 ocupado
       Parqueo1 = 1;
 
 
     }
-    else if (Led2 == 1) {//parqueo 1 ocupado
+    else if (Led2 == 1) {//parqueo 1 disponible
       Parqueo1 = 0;
     }
     if (Led2 == 4) {//parqueo 2 libre
